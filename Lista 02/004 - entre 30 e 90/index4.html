@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>004 - Entre 30 e 90</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Entrar com um número e verificar se o mesmo está no intervalo entre 30 e 90, inclusive. -->
+
+    <h1>Exercício 004</h1>
+
+    <form action="">
+        <div>
+            <label for="idNum">Número:</label>
+            <input type="number" name="nmNum" id="idNum">
+        </div>
+
+        <div>
+            <input type="button" value="Verificar" onclick="verificar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function verificar() {
+            var num = document.querySelector('#idNum').value;
+            var output = document.querySelector('output');
+
+            if (num >= 30 && num <= 90) {
+                output.textContent = 'Está entre 30 e 90';
+            } else {
+                output.textContent = 'Não está entre 30 e 90';
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

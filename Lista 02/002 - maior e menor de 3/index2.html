@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>002 - Maior e Menor de 3</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Elabore um algoritmo que permita a entrada de três números e imprima o maior deles. -->
+    
+    <h1>Exercício 002</h1>
+
+    <form action="">
+        <div>
+            <label for="idNum1">Número 1:</label>
+            <input type="number" name="nmNum1" id="idNum1">
+        </div>
+
+        <div>
+            <label for="idNum2">Número 2:</label>
+            <input type="number" name="nmNum2" id="idNum2">
+        </div>
+
+        <div>
+            <label for="idNum3">Número 3:</label>
+            <input type="number" name="nmNum3" id="idNum3">
+        </div>
+
+        <div>
+            <input type="button" value="Verificar" onclick="verificar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function verificar() {
+            var num1 = document.querySelector('#idNum1').value;
+            var num2 = document.querySelector('#idNum2').value;
+            var num3 = document.querySelector('#idNum3').value;
+            var output = document.querySelector('output');
+
+            if (num1 > num2 && num1 > num3) {
+                output.value = `O número ${num1} é o maior`;
+            } else if (num2 > num1 && num2 > num3) {
+                output.value = `O número ${num2} é o maior`;
+            } else if (num3 > num1 && num3 > num2) {
+                output.value = `O número ${num3} é o maior`;
+            } else {
+                output.value = `Os números são iguais`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
