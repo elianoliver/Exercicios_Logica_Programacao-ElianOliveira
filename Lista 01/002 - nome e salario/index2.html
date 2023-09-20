@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 002</title>
+
+    <style>
+        * {
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+
+        form div {
+            margin-bottom: 10px;
+        }
+    </style>
+
+<body>
+    <!-- 2. Crie um programa que leia o nome e o salário de um funcionário, mostrando no final uma mensagem.
+  Ex: Entrada: Nome do Funcionário: Maria do Carmo Salário: 1850,45 Saída: O funcionário Maria do Carmo tem um salário de R$1850,45 em Junho. -->
+
+    <h1>Exercício 002</h1>
+
+    <form action="">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome"> <br>
+        </div>
+
+        <div>
+            <label for="salario">Salário:</label>
+            <input type="number" name="salario" id="salario" min="0" step="0.01">
+        </div>
+
+        <div>
+            <input type="button" value="Enviar" onclick="enviar()">
+        </div>
+
+        <output id="output"></output>
+    </form>
+
+    <script>
+        function enviar() {
+            let salario = Number(document.querySelector('#salario').value);
+            let nome = document.querySelector('#nome').value;
+            let output = document.querySelector('#output');
+
+            output.innerHTML = `O funcionário ${nome} tem um salário de R$ ${salario.toFixed(2)} em Junho.`;
+        }
+    </script>
+</body>
+
+</html>

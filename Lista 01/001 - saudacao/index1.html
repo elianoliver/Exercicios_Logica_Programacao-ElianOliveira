@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 001</title>
+
+    <style>
+        * {
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        form div {
+            margin-bottom: 10px;
+        }
+
+        input[type=text] {
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1. Faça um programa que leia o nome de uma pessoa e mostre uma mensagem de boas vindas para ela:
+~~~
+    Ex:
+        Qual é o seu nome? João da Silva
+        Olá João da Silva, é um prazer te conhecer!
+~~~ -->
+    <h1>Exercício 001</h1>
+
+    <form action="" method="post">
+        <div>
+            <label for="nome">Qual é o seu nome?</label>
+            <input type="text" name="nome" id="nome">
+            <input type="button" value="Enviar" onclick="enviar()">
+        </div>
+
+        <div>
+            <output id="output"></output>
+        </div>
+    </form>
+
+
+
+    <script>
+        function enviar() {
+            let nome = document.querySelector('#nome').value;
+            let output = document.querySelector('#output');
+
+            output.innerHTML = `Olá ${nome}, é um prazer te conhecer!`;
+        }
+    </script>
+
+</body>
+
+</html>
