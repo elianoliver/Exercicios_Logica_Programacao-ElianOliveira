@@ -55,8 +55,8 @@
 
     <script>
         function verificar() {
-            var num1 = document.querySelector('#idNum1').value;
-            var num2 = document.querySelector('#idNum2').value;
+            var num1 = Number(document.querySelector('#idNum1').value);
+            var num2 = Number(document.querySelector('#idNum2').value);
             var output = document.querySelector('output');
 
             if (num1 > num2) {
