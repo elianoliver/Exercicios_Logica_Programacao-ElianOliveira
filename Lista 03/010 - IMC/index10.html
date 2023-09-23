@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>010 - IMC</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- O Índice de Massa Corpórea (IMC) é um valor calculado baseado na altura e no peso de uma pessoa. De acordo com o valor do IMC, podemos classificar o indivíduo dentro de certas faixas.
+
+    abaixo de 18.5: Abaixo do peso
+    entre 18.5 e 25: Peso ideal
+    entre 25 e 30: Sobrepeso
+    entre 30 e 40: Obesidade
+    acima de 40: Obesidade mórbida
+    Obs: O IMC é calculado pela expressão peso/altura² (peso dividido pelo quadrado da altura)
+
+    Crie um programa que receba o peso e a altura de uma pessoa e informe na tela em que faixa de IMC ela se encontra.
+    -->
+
+    <h1>010 - IMC</h1>
+
+    <form action="">
+        <div>
+            <label for="idPeso">Peso: </label>
+            <input type="number" name="nmPeso" id="idPeso" min="0" step="0.01">
+        </div>
+        <div>
+            <label for="idAltura">Altura: </label>
+            <input type="number" name="nmAltura" id="idAltura" min="0" step="0.01">
+        </div>
+
+        <div>
+            <input type="button" value="Verificar" onclick="verificar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function verificar() {
+            let peso = Number(document.querySelector('#idPeso').value);
+            let altura = Number(document.querySelector('#idAltura').value);
+            let output = document.querySelector('output');
+
+            let imc = peso / (altura * altura);
+
+            if (imc < 18.5) {
+                output.textContent = `Seu IMC é ${imc.toFixed(2)} e você está abaixo do peso.`;
+            } else if (imc >= 18.5 && imc < 25) {
+                output.textContent = `Seu IMC é ${imc.toFixed(2)} e você está no peso ideal.`;
+            } else if (imc >= 25 && imc < 30) {
+                output.textContent = `Seu IMC é ${imc.toFixed(2)} e você está com sobrepeso.`;
+            } else if (imc >= 30 && imc < 40) {
+                output.textContent = `Seu IMC é ${imc.toFixed(2)} e você está com obesidade.`;
+            } else {
+                output.textContent = `Seu IMC é ${imc.toFixed(2)} e você está com obesidade mórbida.`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>009 - Triângulos e Retas</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Crie um programa que leia o tamanho de três segmentos de reta.
+Analise seus comprimentos e diga se é possível formar um triângulo com essas retas. Matematicamente, para três segmentos formarem um triângulo, o comprimento de cada lado deve ser menor que a soma dos outros dois.
+    -->
+
+    <h1>009 - Triângulos e Retas</h1>
+
+    <form action="">
+        <div>
+            <label for="idReta1">Reta 1: </label>
+            <input type="number" name="nmReta1" id="idReta1">
+        </div>
+        <div>
+            <label for="idReta2">Reta 2: </label>
+            <input type="number" name="nmReta2" id="idReta2">
+        </div>
+        <div>
+            <label for="idReta3">Reta 3: </label>
+            <input type="number" name="nmReta3" id="idReta3">
+        </div>
+
+        <div>
+            <input type="button" value="Verificar" onclick="verificar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function verificar() {
+            let reta1 = Number(document.querySelector('#idReta1').value);
+            let reta2 = Number(document.querySelector('#idReta2').value);
+            let reta3 = Number(document.querySelector('#idReta3').value);
+
+            let output = document.querySelector('output');
+
+            if (reta1 < reta2 + reta3 && reta2 < reta1 + reta3 && reta3 < reta1 + reta2) {
+                output.textContent = `É possível formar um triângulo com essas retas.`;
+            } else {
+                output.textContent = `Não é possível formar um triângulo com essas retas.`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

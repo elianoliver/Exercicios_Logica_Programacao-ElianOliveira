@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>007 - Promoção Mulher</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Numa promoção exclusiva para o Dia da Mulher, uma loja quer dar descontos para todos, mas especialmente para mulheres. Faça um programa que leia nome, sexo e o valor das compras do cliente e calcule o preço com desconto. Sabendo que:
+        Homens ganham 5% de desconto
+        Mulheres ganham 13% de desconto
+    -->
+
+    <h1>007 - Promoção Mulher</h1>
+
+    <form action="">
+        <div>
+            <label for="idNome">Nome: </label><br>
+            <input type="text" name="nmNome" id="idNome">
+        </div>
+
+        <div>
+            <label for="idValor">Valor das compras: </label><br>
+            <input type="number" name="nmValor" id="idValor">
+        </div>
+
+        <div>
+            <label>Sexo:</label><br>
+            <input type="radio" id="masculino" name="genero" value="masculino">
+            <label for="masculino">Masculino</label><br>
+            <input type="radio" id="feminino" name="genero" value="feminino">
+            <label for="feminino">Feminino</label><br>
+        </div>
+
+        <div>
+            <input type="button" value="Verificar" onclick="verificar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function verificar() {
+            let nome = document.querySelector('#idNome').value;
+            let valor = Number(document.querySelector('#idValor').value);
+            let genero = document.querySelector('input[name="genero"]:checked').value;
+            let output = document.querySelector('output');
+
+            if (genero == 'masculino') {
+                output.innerHTML = `Olá, ${nome}. O valor da sua compra é R$${valor} e você ganhou 5% de desconto. O valor final é R$${valor - (valor * 0.05)}`;
+            } else {
+                output.innerHTML = `Olá, ${nome}. O valor da sua compra é R$${valor} e você ganhou 13% de desconto. O valor final é R$${valor - (valor * 0.13)}`;
+            }
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

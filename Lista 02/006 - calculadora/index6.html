@@ -62,7 +62,7 @@
         <div class="operadores">
             <input type="button" value="+" onclick="verificar()">
             <input type="button" value="-" onclick="verificar()">
-            <input type="button" value="*" onclick="verificar()">
+            <input type="button" value="x" onclick="verificar()">
             <input type="button" value="/" onclick="verificar()">
         </div>
 
@@ -76,23 +76,23 @@
             let num1 = document.querySelector('#idNum1').value;
             let num2 = document.querySelector('#idNum2').value;
             let operador = event.target.value;
-            let resultado = document.querySelector('output');
+            let output = document.querySelector('output');
 
             switch (operador) {
                 case '+':
-                    resultado.value = parseInt(num1) + parseInt(num2);
+                    output.value = parseInt(num1) + parseInt(num2);
                     break;
                 case '-':
-                    resultado.value = parseInt(num1) - parseInt(num2);
+                    output.value = parseInt(num1) - parseInt(num2);
                     break;
-                case '*':
-                    resultado.value = parseInt(num1) * parseInt(num2);
+                case 'x':
+                    output.value = parseInt(num1) * parseInt(num2);
                     break;
                 case '/':
-                    resultado.value = parseInt(num1) / parseInt(num2);
+                    output.value = parseInt(num1) / parseInt(num2);
                     break;
                 default:
-                    resultado.value = 'Operador inválido';
+                    output.value = 'Operador inválido';
                     break;
             }
         }
