@@ -75,25 +75,33 @@
         const usuario3 = 'Aluno3';
         const senha3 = '123Trocar';
 
+        let tentativas = 0;
+
         function verificar() {
             let usuario = document.getElementById('idUsuario').value;
             let senha = document.getElementById('idSenha').value;
             let output = document.querySelector('output');
 
-            if (usuario == usuario1 && senha == senha1) {
-                output.innerHTML = 'Acesso Permitido';
-            } else if (usuario == usuario2 && senha == senha2) {
-                output.innerHTML = 'Acesso Permitido';
-            } else if (usuario == usuario3 && senha == senha3) {
-                output.innerHTML = 'Acesso Permitido';
-            } else if (usuario == usuario1 && senha != senha1) {
-                output.innerHTML = 'Senha incorreta';
-            } else if (usuario == usuario2 && senha != senha2) {
-                output.innerHTML = 'Senha incorreta';
-            } else if (usuario == usuario3 && senha != senha3) {
-                output.innerHTML = 'Senha incorreta';
-            } else if (usuario != usuario1 && usuario != usuario2 && usuario != usuario3) {
-                output.innerHTML = 'Usuário não cadastrado';
+            tentativas++;
+            if (tentativas <= 3) {
+                if (usuario == usuario1 && senha == senha1) {
+                    output.innerHTML = 'Acesso Permitido';
+                } else if (usuario == usuario2 && senha == senha2) {
+                    output.innerHTML = 'Acesso Permitido';
+                } else if (usuario == usuario3 && senha == senha3) {
+                    output.innerHTML = 'Acesso Permitido';
+                } else if (usuario == usuario1 && senha != senha1) {
+                    output.innerHTML = 'Senha incorreta';
+                } else if (usuario == usuario2 && senha != senha2) {
+                    output.innerHTML = 'Senha incorreta';
+                } else if (usuario == usuario3 && senha != senha3) {
+                    output.innerHTML = 'Senha incorreta';
+                } else if (usuario != usuario1 && usuario != usuario2 && usuario != usuario3) {
+                    output.innerHTML = 'Usuário não cadastrado';
+                }
+            }
+            else {
+                alert('Você excedeu o número de tentativas. Tente novamente mais tarde.')
             }
         }
     </script>

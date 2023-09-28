@@ -56,14 +56,17 @@
         function verificar() {
             let anoNascimento = Number(document.querySelector('#idAno').value);
             let output = document.querySelector('output');
+
             let anoAtual = new Date().getFullYear();
             let idade = anoAtual - anoNascimento;
 
             if (idade < 18) {
+                let diferencaIdade = idade - anoAtual;
                 output.innerHTML = `Você tem ${idade} anos e ainda não precisa se alistar. Ainda faltam ${18 - idade} anos para você se alistar.`;
             } else if (idade == 18) {
                 output.innerHTML = `Você tem ${idade} anos e precisa se alistar`;
             } else {
+                let diferencaIdade = anoAtual - idade;
                 output.innerHTML = `Você tem ${idade} anos e já passou do tempo de se alistar. Já se passaram ${idade - 18} anos.`;
             }
         }

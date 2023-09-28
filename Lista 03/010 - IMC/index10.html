@@ -69,18 +69,18 @@
             let altura = Number(document.querySelector('#idAltura').value);
             let output = document.querySelector('output');
 
-            let imc = peso / (altura * altura);
+            let imc = (peso / (altura * altura)).toFixed(2);
 
             if (imc < 18.5) {
-                output.textContent = `Seu IMC é ${imc.toFixed(2)} e você está abaixo do peso.`;
+                output.textContent = `Seu IMC é ${imc} e você está abaixo do peso.`;
             } else if (imc >= 18.5 && imc < 25) {
-                output.textContent = `Seu IMC é ${imc.toFixed(2)} e você está no peso ideal.`;
+                output.textContent = `Seu IMC é ${imc} e você está no peso ideal.`;
             } else if (imc >= 25 && imc < 30) {
-                output.textContent = `Seu IMC é ${imc.toFixed(2)} e você está com sobrepeso.`;
+                output.textContent = `Seu IMC é ${imc} e você está com sobrepeso.`;
             } else if (imc >= 30 && imc < 40) {
-                output.textContent = `Seu IMC é ${imc.toFixed(2)} e você está com obesidade.`;
+                output.textContent = `Seu IMC é ${imc} e você está com obesidade.`;
             } else {
-                output.textContent = `Seu IMC é ${imc.toFixed(2)} e você está com obesidade mórbida.`;
+                output.textContent = `Seu IMC é ${imc} e você está com obesidade mórbida.`;
             }
         }
     </script>

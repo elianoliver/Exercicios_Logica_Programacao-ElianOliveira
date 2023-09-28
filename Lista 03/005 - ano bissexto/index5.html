@@ -54,7 +54,11 @@
             let ano = document.querySelector('#idAno').value;
             let output = document.querySelector('output');
 
-            if (ano % 4 == 0) {
+            let resto4 = ano % 4;
+            let resto100 = ano % 100;
+            let resto400 = ano % 400;
+
+            if ((resto4 == 0 && resto100 != 0) || (resto400 == 0)) {
                 output.innerHTML = `O ano ${ano} é BISSEXTO`;
             } else {
                 output.innerHTML = `O ano ${ano} não é BISSEXTO`;

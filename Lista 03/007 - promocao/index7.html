@@ -45,7 +45,7 @@
 
         <div>
             <label for="idValor">Valor das compras: </label><br>
-            <input type="number" name="nmValor" id="idValor">
+            <input type="number" name="nmValor" id="idValor" step="0.01">
         </div>
 
         <div>
@@ -73,9 +73,11 @@
             let output = document.querySelector('output');
 
             if (genero == 'masculino') {
-                output.innerHTML = `Olá, ${nome}. O valor da sua compra é R$${valor} e você ganhou 5% de desconto. O valor final é R$${valor - (valor * 0.05)}`;
+                let desconto = (valor - (valor * 0.05)).toFixed(2);
+                output.innerHTML = `Olá, ${nome}. O valor da sua compra é R$${valor} e você ganhou 5% de desconto. O valor final é R$${desconto}`;
             } else {
-                output.innerHTML = `Olá, ${nome}. O valor da sua compra é R$${valor} e você ganhou 13% de desconto. O valor final é R$${valor - (valor * 0.13)}`;
+                let desconto = (valor - (valor * 0.13)).toFixed(2);
+                output.innerHTML = `Olá, ${nome}. O valor da sua compra é R$${valor} e você ganhou 13% de desconto. O valor final é R$${desconto}`;
             }
         }
 
