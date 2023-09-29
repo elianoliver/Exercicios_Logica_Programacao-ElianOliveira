@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>008 - Perguntar inicio, fim e incremento</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Crie um algoritmo que leia o valor inicial da contagem, o valor final e o incremento, mostrando em seguida todos os valores no intervalo:
+    Exemplo:
+    Digite o primeiro Valor: 3
+    Digite o último Valor: 10
+    Digite o incremento: 2
+    Contagem: 3 5 7 9 Acabou! -->
+
+    <h1>008 - Perguntar inicio, fim e incremento</h1>
+
+    <form action="">
+        <!-- VALOR INICIAL -->
+        <div>
+            <label for="idInicio">Valor Inicial:</label>
+            <input type="number" name="nmInicio" id="idInicio">
+        </div>
+
+        <!-- VALOR FINAL -->
+        <div>
+            <label for="idFinal">Valor Final:</label>
+            <input type="number" name="nmFinal" id="idFinal">
+        </div>
+
+        <!-- INCREMENTO -->
+        <div>
+            <label for="idIncremento">Incremento:</label>
+            <input type="number" name="nmIncremento" id="idIncremento">
+        </div>
+
+        <!-- BOTÃO -->
+        <div>
+            <input type="button" value="Mostrar Contagem" onclick="mostrar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function mostrar() {
+            let inicio = Number(document.querySelector('#idInicio').value)
+            let fim = Number(document.querySelector('#idFinal').value)
+            let incremento = Number(document.querySelector('#idIncremento').value)
+            let output = document.querySelector('output')
+            
+            output.innerHTML = '' // Limpa o output
+
+            for (let i = inicio; i <= fim; i += incremento) {
+                output.innerHTML += `${i} `
+            }
+        }
+    </script>
+
+</body>
+
+</html>

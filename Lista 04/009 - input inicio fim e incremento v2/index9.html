@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>009 - Input inicio, fim e incremento V2</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- O programa acima vai ter um problema quando digitarmos o primeiro valor maior que o último. Resolva esse problema com um código que funcione em qualquer situação. -->
+
+    <h1>009 - Input inicio, fim e incremento V2</h1>
+
+    <form action="">
+        <!-- VALOR INICIAL -->
+        <div>
+            <label for="idInicio">Valor Inicial:</label>
+            <input type="number" name="nmInicio" id="idInicio">
+        </div>
+
+        <!-- VALOR FINAL -->
+        <div>
+            <label for="idFinal">Valor Final:</label>
+            <input type="number" name="nmFinal" id="idFinal">
+        </div>
+
+        <!-- INCREMENTO -->
+        <div>
+            <label for="idIncremento">Incremento:</label>
+            <input type="number" name="nmIncremento" id="idIncremento">
+        </div>
+
+        <!-- BOTÃO -->
+        <div>
+            <input type="button" value="Mostrar Contagem" onclick="mostrar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function mostrar() {
+            let inicio = Number(document.querySelector('#idInicio').value)
+            let fim = Number(document.querySelector('#idFinal').value)
+            let incremento = Number(document.querySelector('#idIncremento').value)
+            let output = document.querySelector('output')
+
+            output.innerHTML = '' // Limpa o output
+
+            //se o incremento é negativo, transforma em positivo
+            if (incremento < 0) {
+                incremento *= -1
+            }
+
+            //se o incremento for zero, mostra mensagem
+            if (incremento == 0) {
+                alert("O incremento não pode ser Zero!")
+            } else {
+                //se o inicio for menor que o fim, faz a contagem crescente
+                if (inicio < fim) {
+                    for (let i = inicio; i <= fim; i += incremento) {
+                        output.innerHTML += `${i} `
+                    }
+                }
+                //se o inicio for maior que o fim, faz a contagem decrescente
+                else if (inicio > fim) {
+                    for (let i = inicio; i >= fim; i -= incremento) {
+                        output.innerHTML += `${i} `
+                    }
+                }
+                //se o inicio for igual ao fim, mostra mensagem
+                else {
+                    output.innerHTML = "O Número Inicial é Igual ao Número Final"
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

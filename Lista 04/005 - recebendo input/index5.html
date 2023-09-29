@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>005 - Recebendo Input</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Faça um algoritmo que pergunte ao usuário um número inteiro e positivo qualquer e mostre uma contagem até esse valor:
+    Ex: Digite um valor: 77
+    Contagem: "Inicio 1 2 3 4 5 6 7 ... 75 76 77 Acabou!" -->
+
+    <h1>005 - Recebendo Input</h1>
+
+    <form action="">
+        <label for="idNum">Digite um número inteiro e positivo qualquer</label>
+
+        <div>
+            <input type="number" name="nmNum" id="idNum" min="0" autofocus>
+            <input type="button" value="Enviar" onclick="contagem()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function contagem() {
+            let num = Number(document.querySelector('#idNum').value);
+            let output = document.querySelector('output');
+
+            if (num > 0) {
+                output.innerHTML = `Contagem: "Inicio `;
+
+                for (let i = 1; i <= num; i++) {
+                    output.innerHTML += `${i} `;
+                }
+                
+                output.innerHTML += `Acabou!"`;
+            } else {
+                output.innerHTML = `Digite um número inteiro e positivo qualquer`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
