@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>008 - Celcius para Farenheit</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        output div {
+            display: flex;
+            justify-content: flex-start;
+
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Ler uma temperatura em graus Celsius e apresentá-la convertida em graus Fahrenheit. A fórmula de conversão é: F=(9*C+160)/5, sendo F a temperatura em Fahrenheit e C a temperatura em Celsius.
+    -->
+
+    <h1>008 - Celcius para Fahrenheit</h1>
+
+    <form action="">
+        <!-- PRODUTO -->
+        <div>
+            <label for="idCelcius">Graus em Cº</label>
+            <input type="number" name="nmCelcius" id="idCelcius" min="0" step="0.1" autofocus>
+        </div>
+
+        <!-- BOTÃO ENVIAR -->
+        <input type="button" value="Enviar" onclick="mostrar()">
+
+        <!-- RESULTADO -->
+        <output></output>
+
+    </form>
+
+    <script>
+        function mostrar() {
+            let celcius = Number(document.querySelector('#idCelcius').value);
+            let output = document.querySelector('output');
+
+            let fahrenheit = ((9 * celcius + 160) / 5).toFixed(2);
+
+            output.innerHTML = `<div>A temperatura de ${celcius}ºC corresponde a ${fahrenheit}ºF</div>`;
+        }
+    </script>
+
+</body>
+
+</html>

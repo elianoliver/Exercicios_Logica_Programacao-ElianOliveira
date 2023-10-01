@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>004 - primeiros 10 fibonacci</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Faça um programa que mostre os 10 primeiros elementos da Sequência de Fibonacci:
+    0 1 1 2 3 5 8 13 21...
+    -->
+
+    <h1>004 - primeiros 10 fibonacci</h1>
+
+    <form action="">
+        <!-- BOTÃO MOSTRAR -->
+        <div>
+            <input type="button" value="Mostrar" onclick="mostrar()">
+        </div>
+
+        <!-- RESULTADO -->
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        /* ENTENDO O CÓDIGO
+        fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+
+        fibonacci[2] = fibonacci[2-1] + fibonacci[2-2]
+        fibonacci[2] = fibonacci[1] + fibonacci[0]
+        fibonacci[2] = 1 + 0
+        fibonacci[2] = 1
+        0 1 1
+
+        fibonacci[3] = fibonacci[3-1] + fibonacci[3-2]
+        fibonacci[3] = fibonacci[2] + fibonacci[1]
+        fibonacci[3] = 1 + 1
+        fibonacci[3] = 2
+        0 1 1 2
+
+        fibonacci[4] = fibonacci[4-1] + fibonacci[4-2]
+        fibonacci[4] = fibonacci[3] + fibonacci[2]
+        fibonacci[4] = 2 + 1
+        fibonacci[4] = 3
+        0 1 1 2 3
+        */
+
+        function mostrar() {
+            let output = document.querySelector('output');
+            let fibonacci = [0, 1];
+
+            for (let i = 2; i < 10; i++) {
+                fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+            }
+
+            output.value = fibonacci.join(' ');
+        }
+
+    </script>
+
+</body>
+
+</html>

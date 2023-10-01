@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>007 - Adivinhe o Número</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        output div {
+            display: flex;
+            justify-content: flex-start;
+
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Em um jogo de adivinhação, o jogador deve descobrir um número entre 1 e 10 usando até três tentativas. A cada tentativa o jogador é informado se o número foi descoberto, ou se ele é maior ou menor do que a tentativa. Se após três tentativas o jogador não descobrir o número, então ele perde o jogo. Crie um algoritmo que implemente esse jogo.
+    -->
+
+    <h1>007 - Adivinhe o Número</h1>
+
+    <form action="">
+        <!-- PRODUTO -->
+        <div>
+            <label for="idTentativa">Tentativa Nº1</label>
+            <input type="number" name="nmTentativa" id="idTentativa" min="0" autofocus>
+        </div>
+
+        <!-- BOTÃO ENVIAR -->
+        <input type="button" value="Enviar" onclick="mostrar()">
+
+        <!-- RESULTADO -->
+        <output></output>
+
+    </form>
+
+    <script>
+        let numero = Math.floor(Math.random() * 11);
+        let contador = 0;
+
+        function mostrar() {
+            let tentativa = Number(document.querySelector('#idTentativa').value);
+            let label = document.querySelector('label');
+            let output = document.querySelector('output');
+
+            let resultado = '';
+
+            if (tentativa == numero) {
+                resultado = 'Parabéns! Você acertou!';
+                numero = Math.floor(Math.random() * 11);
+                contador = 0;
+            } else if (tentativa > numero && contador < 3) {
+                resultado = 'O número é menor';
+            } else if (tentativa < numero && contador < 3){
+                resultado = 'O número é maior';
+            } else {
+                resultado = 'Você perdeu! O número era ' + numero + '.';
+                numero = Math.floor(Math.random() * 11);
+                contador = 0;
+            }
+
+            label.innerHTML = `Tentativa Nº${++contador}`;
+            output.innerHTML = `
+            <div>${resultado}</div>
+            <div>shhhh não conta pra ninguém mas é... ${numero}</div>`;
+        }
+    </script>
+
+</body>
+
+</html>
