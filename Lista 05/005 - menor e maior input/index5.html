@@ -43,10 +43,10 @@
     <h1>005 - menor e maior input</h1>
 
     <form action="">
-        <!-- PRODUTO -->
+        <!-- PREÇO -->
         <div>
-            <label for="idProduto">Produto Nº1</label>
-            <input type="number" name="nmProduto" id="idProduto" min="0" step="0.01">
+            <label for="idValor">1º Preço</label>
+            <input type="number" name="nmValor" id="idValor" min="0" step="0.01">
         </div>
 
         <!-- BOTÃO ENVIAR -->
@@ -61,32 +61,30 @@
     </form>
 
     <script>
-        let produtos = [];
         let contador = 1;
-        
+        let menor;
+        let maior;
+
         function mostrar() {
-            let produto = Number(document.querySelector('#idProduto').value);
+            let numero = Number(document.querySelector('#idValor').value);
             let label = document.querySelector('label');
             let output = document.querySelector('output');
 
-            produtos.push(produto);
-
-            let menor = produto;
-            let maior = produto;
-
-            for (let i = 0; i < produtos.length; i++) {
-                if (produtos[i] < menor) {
-                    menor = produtos[i];
-                }
-                if (produtos[i] > maior) {
-                    maior = produtos[i];
-                }
+            if (contador == 1) {
+                menor = numero;
+                maior = numero;
             }
 
-            label.innerText = `Produto Nº${++contador}`;
+            if (numero < menor) {
+                menor = numero;
+            }
+            if (numero > maior) {
+                maior = numero;
+            }
+
+            label.innerText = `${++contador}º Preço`;
             output.innerText = `Menor: ${menor} Maior: ${maior}`;
         }
-
     </script>
 
 </body>

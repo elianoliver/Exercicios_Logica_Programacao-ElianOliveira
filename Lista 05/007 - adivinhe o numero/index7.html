@@ -54,7 +54,7 @@
     <h1>007 - Adivinhe o Número</h1>
 
     <form action="">
-        <!-- PRODUTO -->
+        <!-- NUMERO -->
         <div>
             <label for="idTentativa">Tentativa Nº1</label>
             <input type="number" name="nmTentativa" id="idTentativa" min="0" autofocus>
@@ -70,7 +70,7 @@
 
     <script>
         let numero = Math.floor(Math.random() * 11);
-        let contador = 0;
+        let contador = 1;
 
         function mostrar() {
             let tentativa = Number(document.querySelector('#idTentativa').value);
@@ -78,22 +78,27 @@
             let output = document.querySelector('output');
 
             let resultado = '';
+            label.innerHTML = `Tentativa Nº${++contador}`;
 
             if (tentativa == numero) {
-                resultado = 'Parabéns! Você acertou!';
-                numero = Math.floor(Math.random() * 11);
-                contador = 0;
-            } else if (tentativa > numero && contador < 3) {
+                output.innerHTML = "<div>Parabéns! Você acertou!</div>";
+                return;
+            }
+            // maior que o numero sorteado e dentro do limite de tentativas
+            else if (tentativa > numero && contador <= 3) {
                 resultado = 'O número é menor';
-            } else if (tentativa < numero && contador < 3){
+            }
+            // menor que o numero sorteado e dentro do limite de tentativas
+            else if (tentativa < numero && contador <= 3){
                 resultado = 'O número é maior';
-            } else {
-                resultado = 'Você perdeu! O número era ' + numero + '.';
-                numero = Math.floor(Math.random() * 11);
-                contador = 0;
+            }
+            // se o numero de tentativas for maior que 3
+            else {
+                label.innerHTML = `Tentativa Nº${--contador}`;
+                output.innerHTML = `<div> Você perdeu! O número era ${numero}</div>`;
+                return;
             }
 
-            label.innerHTML = `Tentativa Nº${++contador}`;
             output.innerHTML = `
             <div>${resultado}</div>
             <div>shhhh não conta pra ninguém mas é... ${numero}</div>`;

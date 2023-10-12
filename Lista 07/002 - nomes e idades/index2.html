@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>002 - Nomes e Idades</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        output div {
+            display: flex;
+            justify-content: flex-start;
+
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Crie um programa que leia o nome e a idade de 9 pessoas e guarde esses valores em dois vetores, em posições relacionadas. No final, mostre uma listagem contendo apenas os dados das pessoas menores de idade.
+    -->
+    <h1>002 - Nomes e Idades</h1>
+
+    <form action="">
+        <!-- NOME -->
+        <div>
+            <label for="idNome">Nome:</label>
+            <input type="text" name="nmNome" id="idNome" required/>
+        </div>
+
+        <!-- IDADE -->
+        <div>
+            <label for="idIdade">Idade:</label>
+            <input type="number" name="nmIdade" id="idIdade" min="0" required/>
+        </div>
+
+        <!-- BOTÃO ENVIAR -->
+        <div>
+            <input type="button" value="Enviar" onclick="enviar()" />
+            <input type="button" value="Mostrar" onclick="mostrar()" />
+        </div>
+
+
+        <!-- RESULTADO -->
+        <output></output>
+    </form>
+
+    <script>
+        let nomes = [];
+        let idades = [];
+        let contador = 1;
+
+        function enviar() {
+            let nome = document.querySelector("#idNome").value;
+            let idade = document.querySelector("#idIdade").value;
+            let output = document.querySelector("output");
+
+            if (nome == "" || idade == "") {
+                output.innerHTML = `<div>Preencha todos os campos!</div>`;
+                return;
+            } else if (idade < 0) {
+                output.innerHTML = `<div>Idade inválida!</div>`;
+                return;
+            } else if (contador > 9) {
+                output.innerHTML = `<div>Limite de cadastros atingido!</div>`;
+                return;
+            }
+
+            nomes.push(nome);
+            idades.push(idade);
+            contador++;
+
+            document.querySelector("#idNome").value = "";
+            document.querySelector("#idIdade").value = "";
+
+            console.log(nomes);
+            console.log(idades);
+        }
+
+        function mostrar() {
+            let output = document.querySelector("output");
+            let mensagem = "Menores de idade:<br><br>";
+
+            if (nomes.length == 0) {
+                output.innerHTML = `<div>Não há dados para mostrar!</div>`;
+                return;
+            }
+
+            for (let i = 0; i < nomes.length; i++) {
+                if (idades[i] < 18) {
+                    mensagem += `${nomes[i]} - ${idades[i]}<br>`;
+                }
+            }
+
+            output.innerHTML = `<div>${mensagem}</div>`;
+        }
+    </script>
+</body>
+
+</html>

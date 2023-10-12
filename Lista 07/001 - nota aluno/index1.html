@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>001 - Nota Aluno</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        output div {
+            display: flex;
+            justify-content: flex-start;
+
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Faça um algoritmo que leia a nota de "n" alunos de uma turma e guarde-as em um vetor. No final, mostre:
+            Qual e a media da turma
+            Quantos alunos estão acima da média da turma
+            Qual foi a maior nota digitada
+            Em que posições a maior nota aparece
+        -->
+    <h1>001 - Nota Aluno</h1>
+
+    <form action="">
+        <!-- NOTAS -->
+        <div>
+            <label for="idNota">Nota</label>
+            <input type="number" name="nmNota" id="idNota" min="0" max="10" step="0.01" />
+
+            <!-- BOTÃO ENVIAR -->
+            <input type="button" value="Enviar" onclick="enviar()" />
+        </div>
+
+        <!-- RESULTADO -->
+        <output></output>
+    </form>
+
+    <script>
+        let notas = [];
+        let media = 0;
+        let mediaAuxiliar = 0;
+        let acimaMedia = 0;
+        let maiorNota;
+
+        function enviar() {
+            let nota = document.querySelector("#idNota").value;
+            let output = document.querySelector("output");
+
+            // se o input estiver vazio
+            if (nota == "") {
+                output.innerHTML = "<div>Digite uma nota</div>";
+                return;
+            }
+            // se o input for menor que 0 ou maior que 10
+            else if (nota < 0 || nota > 10) {
+                output.innerHTML = "<div>Nota inválida</div>";
+                return;
+            }
+            // se o input for válido
+            else {
+                nota = parseFloat(nota);
+                notas.push(nota);
+
+                if (nota > 6) {
+                    acimaMedia++;
+                }
+
+                media += nota;
+
+                if (notas.indexOf(nota) == 0) {
+                    maiorNota = nota;
+                } else if (nota > maiorNota) {
+                    maiorNota = nota;
+                }
+            }
+
+            document.querySelector("#idNota").value = ""; // limpando o input
+            document.querySelector("#idNota").focus(); // focando no input
+
+            output.innerHTML = `
+            <div>Notas da turma: ${notas}</div>
+            <div>Média da turma: ${(media/notas.length).toFixed(2)}</div>
+            <div>Alunos acima da média: ${acimaMedia}</div>
+            <div>Maior nota: ${maiorNota}</div>`;
+        }
+    </script>
+</body>
+
+</html>

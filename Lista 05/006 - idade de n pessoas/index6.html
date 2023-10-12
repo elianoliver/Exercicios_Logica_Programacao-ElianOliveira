@@ -58,7 +58,7 @@
     <h1>006 - Idade de n Pessoas</h1>
 
     <form action="">
-        <!-- PRODUTO -->
+        <!-- IDADE -->
         <div>
             <label for="idIdade">Idade Pessoa Nº1</label>
             <input type="number" name="nmIdade" id="idIdade" min="0" autofocus>
@@ -73,12 +73,13 @@
     </form>
 
     <script>
-        let idades = [];
         let contador = 1;
         let soma = 0;
         let mediaIdades = 0;
-
-
+        let menor
+        let maior
+        let acimaDeDezoito = 0
+        let abaixoDeCinco = 0
 
         function mostrar() {
             let idade = Number(document.querySelector('#idIdade').value);
@@ -86,52 +87,45 @@
             let output = document.querySelector('output');
 
             // evitando idades negativas
-            if (idade < 0) {
-                alert('Digite uma idade válida!');
-                return;
-            }
+            if (idade > 0) {
 
-            // adicionando idades ao array
-            idades.push(idade);
+                if (contador == 1) {
+                    menor = idade;
+                    maior = idade;
+                }
 
-            // variáveis para maior e menor idade
-            let menor = idade;
-            let maior = idade;
-            let acimaDeDezoito = 0;
-            let abaixoDeCinco = 0;
-
-            // loop para percorrer o array corrente
-            for (let i = 0; i < idades.length; i++) {
                 //media de idades
-                soma += idades[i];
-                mediaIdades = soma / idades.length;
+                soma += idade;
+                mediaIdades = soma / contador;
 
                 //maior de 18 e menor de 5 anos
-                if (idades[i] > 18) {
+                if (idade > 18) {
                     acimaDeDezoito++;
-                } else if (idades[i] < 5) {
+                } else if (idade < 5) {
                     abaixoDeCinco++;
                 }
 
                 //maior e menor idade
-                if (idades[i] < menor) {
-                    menor = idades[i];
+                if (idade < menor) {
+                    menor = idade;
                 }
-                if (idades[i] > maior) {
-                    maior = idades[i];
+                if (idade > maior) {
+                    maior = idade;
                 }
+
+                label.innerText = `Idade Pessoa Nº${++contador}`;
+
+                output.innerHTML = `
+                <div>Média: ${mediaIdades.toFixed(2)}</div>
+                <div>Menor: ${menor} Maior: ${maior}</div>
+                <div>Acima de 18: ${acimaDeDezoito} pessoas</div>
+                <div>Abaixo de 5: ${abaixoDeCinco} pessoas</div>
+                `;
+            } else {
+                output.innerHTML = 'Digite uma idade válida!';
+                return // sai da função
             }
-
-            label.innerText = `Idade Pessoa Nº${++contador}`;
-
-            output.innerHTML = `
-            <div>Média: ${mediaIdades.toFixed(2)}</div>
-            <div>Menor: ${menor} Maior: ${maior}</div>
-            <div>Acima de 18: ${acimaDeDezoito} pessoas</div>
-            <div>Abaixo de 5: ${abaixoDeCinco} pessoas</div>
-            `;
         }
-
     </script>
 
 </body>

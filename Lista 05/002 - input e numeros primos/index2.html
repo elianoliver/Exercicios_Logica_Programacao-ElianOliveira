@@ -71,20 +71,21 @@
             let inicio = Number(document.querySelector('#idInicio').value);
             let fim = Number(document.querySelector('#idFim').value);
             let output = document.querySelector('output');
+            let primo; // variável para verificar se é primo ou não
 
             /* ======== ENTENDENDO O ALGORITMO ========
             inicio 1
             fim 10
 
             variáveis   |   verificação    |         senteça
-            i2 e j2         j < i ?             não? então é primo
+            j2 e i2         j < i ?             não? então é primo
 
-            i3 e j2         j < i ?             sim? então verifica no segundo for
-                loop 2      i3 % j2 == 0 ?      não? então é primo
-                j++ -> j3
-                i3 e j3     j < i ?             não? então é primo
+            j2 e i3        j < i ?             sim? então verifica no segundo for
+                loop 2     i3 % j2 == 0 ?      não? então é primo
+                j++
+                j3 e i3    j < i ?             não? então é primo
 
-            i4 e j2         j < i ?             sim? então verifica no segundo for
+            j2 e i4         j < i ?             sim? então verifica no segundo for
                 loop 2      i4 % j2 == 0 ?      sim? então não é primo! break i++
             */
 
@@ -94,29 +95,25 @@
                 output.innerHTML = '';
 
                 for (let i = inicio; i <= fim; i++) {
+                    primo = true;
 
-                    // 1 não é primo
-                    if (i > 1) {
-                        let primo = true;
-
-                        // enquanto j for menor que i, faça a verificação
-                        for (let j = 2; j < i; j++) {
-                            if (i % j == 0) { // se o resto da divisão for 0, não é primo
-                                primo = false;
-                                break;
-                            }
+                    // enquanto j for menor que i, faça a verificação
+                    for (let j = 2; j < i; j++) {
+                        if (i % j == 0) { // se o resto da divisão for 0, não é primo
+                            primo = false;
+                            break;
                         }
+                    }
 
-                        if (primo) {
+                    if (primo) {
+                        if (i != 1) { // 1 não é primo
                             output.innerHTML += `${i} `;
                         }
                     }
                 }
             }
         }
-
     </script>
-
 </body>
 
 </html>

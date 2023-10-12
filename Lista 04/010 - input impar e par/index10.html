@@ -58,7 +58,7 @@
 
         <!-- RADIO -->
         <div>
-            <input type="radio" id="idPares" name="imparPar" value="idPares">
+            <input type="radio" id="idPares" name="imparPar" value="idPares" checked>
             <label for="idPares">Par</label>
 
             <input type="radio" id="idImpar" name="imparPar" value="idImpar">
@@ -93,16 +93,12 @@
                 }
             }
             // se for impar
-            else if (imparPar == 'idImpar'){
+            else if (imparPar == 'idImpar') {
                 for (let i = inicio; i <= final; i++) {
                     if (i % 2 != 0) {
                         output.innerHTML += `${i} `;
                     }
                 }
-            }
-            // se não selecionar nada
-            else {
-                alert('Selecione uma opção!');
             }
         }
     </script>

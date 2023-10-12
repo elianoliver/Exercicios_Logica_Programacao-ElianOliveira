@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>007 - Input Números e Múltiplos de 10</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        output div {
+            display: flex;
+            justify-content: flex-start;
+
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Escreva um programa que leia "n" números e guarde-os em um vetor. No final,
+    mostre o vetor inteiro na tela e em seguida mostre em que posições foram
+    digitados valores que são múltiplos de 10. -->
+
+    <h1>007 - Input Números e Múltiplos de 10</h1>
+
+    <form action="">
+        <!-- NUMEROS -->
+        <div>
+            <label for="idNum">Número </label>
+            <input type="number" name="nmNum" id="idNum" autofocus />
+        </div>
+
+        <!-- BOTÃO ENVIAR -->
+        <div>
+            <input type="button" value="Enviar" onclick="enviar()"/>
+            <input type="button" value="Mostrar Mult 10" onclick="mostrar()">
+        </div>
+
+        <!-- RESULTADO -->
+        <output></output>
+    </form>
+
+    <script>
+        let numeros = [];
+
+        function enviar() {
+            let numero = Number(document.querySelector("#idNum").value);
+            let output = document.querySelector("output");
+
+            numeros.push(numero);
+            output.innerHTML = `<div>${numeros}</div>`;
+
+            document.querySelector("#idNum").value = "";
+            document.querySelector("#idNum").focus();
+        }
+
+        function mostrar(){
+            let output = document.querySelector("output");
+            let mensagem = "";
+
+            for (let numero of numeros) {
+                if (numero % 10 == 0) {
+                    mensagem += `Número ${numero} na posição ${numeros.indexOf(
+                        numero
+                    )}\n`;
+                }
+            }
+            output.innerHTML += `<div>${mensagem}</div>`;
+        }
+    </script>
+</body>
+
+</html>

@@ -135,40 +135,47 @@
     </form>
 
     <script>
+        let resultado;
+
         function mostrar() {
             let temperaturaInicial = document.querySelector('input[name="nmTempInicial"]:checked').id;
             let temperaturaFinal = document.querySelector('input[name="nmTempFinal"]:checked').id;
             let temperatura = Number(document.querySelector('input[name="nmTemperatura"]').value);
-            let resultado = document.querySelector('output');
+            let output = document.querySelector('output');
 
             // INICIAL CELCIUS
             if (temperaturaInicial == 'inicialCelcius' && temperaturaFinal == 'finalFahrenheit') {
-                resultado.innerHTML = `<div>${temperatura}°C = ${((temperatura * 9) + 160) / 5}°F</div>`;
+                resultado = ((temperatura * 9) + 160) / 5;
+                output.innerHTML = `<div>${temperatura}°C = ${resultado.toFixed(1)}°F</div>`;
 
             } else if (temperaturaInicial == 'inicialCelcius' && temperaturaFinal == 'finalKelvin') {
-                resultado.innerHTML = `<div>${temperatura}°C = ${temperatura + 273}°K</div>`;
+                resultado = temperatura + 273;
+                output.innerHTML = `<div>${temperatura}°C = ${resultado.toFixed(1)}°K</div>`;
 
             // INICIAL FAHRENHEIT
             } else if (temperaturaInicial == 'inicialFahrenheit' && temperaturaFinal == 'finalCelcius') {
-                resultado.innerHTML = `<div>${temperatura}°F = ${((temperatura - 32) * 5) / 9}°C</div>`;
+                resultado = ((temperatura - 32) * 5) / 9;
+                output.innerHTML = `<div>${temperatura}°F = ${resultado.toFixed(1)}°C</div>`;
 
             } else if (temperaturaInicial == 'inicialFahrenheit' && temperaturaFinal == 'finalKelvin') {
-                resultado.innerHTML = `<div>${temperatura}°F = ${(((temperatura - 32) * 5) / 9) + 273}°K</div>`;
+                resultado = (((temperatura - 32) * 5) / 9) + 273;
+                output.innerHTML = `<div>${temperatura}°F = ${resultado.toFixed(1)}°K</div>`;
 
             // INICIAL KELVIN
             } else if (temperaturaInicial == 'inicialKelvin' && temperaturaFinal == 'finalCelcius') {
-                resultado.innerHTML = `<div>${temperatura}°K = ${temperatura - 273}°C</div>`;
+                resultado = temperatura - 273;
+                output.innerHTML = `<div>${temperatura}°K = ${resultado.toFixed(1)}°C</div>`;
 
             } else if (temperaturaInicial == 'inicialKelvin' && temperaturaFinal == 'finalFahrenheit') {
-                resultado.innerHTML = `<div>${temperatura}°K = ${(((temperatura - 273) * 9) + 160) / 5}°F</div>`;
+                resultado = (((temperatura - 273) * 9) + 160) / 5;
+                output.innerHTML = `<div>${temperatura}°K = ${resultado.toFixed(1)}°F</div>`;
 
             // INICIAL E FINAL IGUAIS
             } else {
-                resultado.innerHTML = `<div>Temperatura inicial e final iguais</div>`;
+                output.innerHTML = `<div>Temperatura inicial e final iguais</div>`;
             }
         }
     </script>
 
 </body>
-
 </html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>010 - Conversão de Moedas</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            display: grid;
+            grid-template-areas:
+                "inicial final"
+                "moeda moeda"
+                "botao botao"
+                "resultado resultado";
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 10px;
+        }
+
+        .inicial {
+            grid-area: inicial;
+        }
+
+        .final {
+            grid-area: final;
+        }
+
+        .moeda {
+            grid-area: moeda;
+            text-align: center;
+        }
+
+        .botao {
+            grid-area: botao;
+            padding: 5px;
+        }
+
+        .resultado {
+            grid-area: resultado;
+            text-align: center;
+        }
+
+        output div {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        .estiloDiv {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Elaborar um programa para a casa de câmbio que receba as cotações do dia e efetue a conversão de uma moeda para outra. O programa deverá permitir conversões entre Real, Dólar Americano, Euro, Libra Esterlina e Dólar Canadense.
+
+    O usuário pode selecionar o tipo de moeda de entrada e selecionar o tipo para o qual ele deseja converter.
+    entra -- Dolar -- Destino
+    -->
+
+    <h1>010 - Conversão de Moedas</h1>
+
+    <form action="">
+        <!-- MOEDA INICIAL -->
+        <div class="estiloDiv Inicial">
+            <div>
+                <label>Moeda Inicial</label>
+            </div>
+            <div>
+                <input type="radio" id="inicialReal" name="nmMoedaInicial">
+                <label for="inicialReal">Real</label>
+            </div>
+            <div>
+                <input type="radio" id="inicialDolarUS" name="nmMoedaInicial">
+                <label for="inicialDolarUS">Dólar Americano</label>
+            </div>
+            <div>
+                <input type="radio" id="inicialEuro" name="nmMoedaInicial">
+                <label for="inicialEuro">Euro</label>
+            </div>
+            <div>
+                <input type="radio" id="inicialLibra" name="nmMoedaInicial">
+                <label for="inicialLibra">Libra Esterlina</label>
+            </div>
+            <div>
+                <input type="radio" id="inicialDolarCad" name="nmMoedaInicial">
+                <label for="inicialDolarCad">Dólar Canadense</label>
+            </div>
+        </div>
+
+        <!-- MOEDA FINAL -->
+        <div class="estiloDiv Final">
+            <div>
+                <label>Moeda Final</label>
+            </div>
+            <div>
+                <input type="radio" id="finalReal" name="nmMoedaFinal">
+                <label for="finalReal">Real</label>
+            </div>
+            <div>
+                <input type="radio" id="finalDolarUS" name="nmMoedaFinal">
+                <label for="finalDolarUS">Dólar Americano</label>
+            </div>
+            <div>
+                <input type="radio" id="finalEuro" name="nmMoedaFinal">
+                <label for="finalEuro">Euro</label>
+            </div>
+            <div>
+                <input type="radio" id="finalLibra" name="nmMoedaFinal">
+                <label for="finalLibra">Libra Esterlina</label>
+            </div>
+            <div>
+                <input type="radio" id="finalDolarCad" name="nmMoedaFinal">
+                <label for="finalDolarCad">Dólar Canadense</label>
+            </div>
+        </div>
+
+        <!-- MOEDA INPUT-->
+        <div class="estiloDiv moeda">
+            <label for="idMoeda">Moeda para Conversão</label>
+            <input type="number" name="nmMoeda" id="idMoeda" step="0.1">
+        </div>
+
+        <!-- BOTÃO ENVIAR -->
+        <input type="button" class="botao" value="Enviar" onclick="mostrar()">
+
+        <!-- RESULTADO -->
+        <output class="resultado"></output>
+
+    </form>
+
+    <script>
+        const moedas = {
+            'inicialReal': {
+                'finalReal': 1,
+                'finalDolarUS': 0.1957,
+                'finalEuro': 0.1872,
+                'finalLibra': 0.1621,
+                'finalDolarCad': 0.2685
+            },
+            'inicialDolarUS': {
+                'finalReal': 5.1094,
+                'finalDolarUS': 1,
+                'finalEuro': 0.9566,
+                'finalLibra': 0.8286,
+                'finalDolarCad': 1.372
+            },
+            'inicialEuro': {
+                'finalReal': 5.3403,
+                'finalDolarUS': 1.0452,
+                'finalEuro': 1,
+                'finalLibra': 0.866,
+                'finalDolarCad': 1.434
+            },
+            'inicialLibra': {
+                'finalReal': 6.1645,
+                'finalDolarUS': 1.2065,
+                'finalEuro': 1.1541,
+                'finalLibra': 1,
+                'finalDolarCad': 1.6553
+            },
+            'inicialDolarCad': {
+                'finalReal': 3.723,
+                'finalDolarUS': 0.7287,
+                'finalEuro': 0.6973,
+                'finalLibra': 0.6041,
+                'finalDolarCad': 1
+            }
+        };
+
+        let taxaConversao;
+        let convertido;
+
+        function mostrar() {
+            let moedaInicial = document.querySelector('input[name="nmMoedaInicial"]:checked').id;
+            let moedaFinal = document.querySelector('input[name="nmMoedaFinal"]:checked').id;
+            let moeda = Number(document.querySelector('#idMoeda').value);
+            let resultado = document.querySelector('.resultado');
+
+            taxaConversao = moedas[moedaInicial][moedaFinal];
+            convertido = (moeda * taxaConversao).toFixed(2);
+
+            if (moedaInicial == "inicialReal") {
+                switch (moedaFinal) {
+                    case "finalDolarUS":
+                        resultado.innerHTML = `<div> ${moeda} Reais equivalem a ${convertido} Dólares Americanos</div>`;
+                        break;
+                    case "finalEuro":
+                        resultado.innerHTML = `<div> ${moeda} Reais equivalem a ${convertido} Dólares Americanos</div>`;
+                        break;
+                    case "finalLibra":
+                        resultado.innerHTML = `<div> ${moeda} Reais equivalem a ${convertido} Dólares Americanos</div>`;
+                        break;
+                    case "finalDolarCad":
+                        resultado.innerHTML = `<div> ${moeda} Reais equivalem a ${convertido} Dólares Americanos</div>`;
+                        break;
+                    default:
+                        resultado.innerHTML = `<div>Não é possível converter para a mesma moeda</div>`;
+                        break;
+                }
+            } else if (moedaInicial == "inicialDolarUS") {
+                switch (moedaFinal) {
+                    case "finalReal":
+                        resultado.innerHTML = `<div> ${moeda} Dólares Americanos equivalem a ${convertido} Reais</div>`;
+                        break;
+                    case "finalEuro":
+                        resultado.innerHTML = `<div> ${moeda} Dólares Americanos equivalem a ${convertido} Euros</div>`;
+                        break;
+                    case "finalLibra":
+                        resultado.innerHTML = `<div> ${moeda} Dólares Americanos equivalem a ${convertido} Libras Esterlinas</div>`;
+                        break;
+                    case "finalDolarCad":
+                        resultado.innerHTML = `<div> ${moeda} Dólares Americanos equivalem a ${convertido} Dólares Canadenses</div>`;
+                        break;
+                    default:
+                        resultado.innerHTML = `<div>Não é possível converter para a mesma moeda</div>`;
+                        break;
+                }
+            } else if (moedaInicial == "inicialEuro") {
+                switch (moedaFinal) {
+                    case "finalReal":
+                        resultado.innerHTML = `<div> ${moeda} Euros equivalem a ${convertido} Reais</div>`;
+                        break;
+                    case "finalDolarUS":
+                        resultado.innerHTML = `<div> ${moeda} Euros equivalem a ${convertido} Dólares Americanos</div>`;
+                        break;
+                    case "finalLibra":
+                        resultado.innerHTML = `<div> ${moeda} Euros equivalem a ${convertido} Libras Esterlinas</div>`;
+                        break;
+                    case "finalDolarCad":
+                        resultado.innerHTML = `<div> ${moeda} Euros equivalem a ${convertido} Dólares Canadenses</div>`;
+                        break;
+                    default:
+                        resultado.innerHTML = `<div>Não é possível converter para a mesma moeda</div>`;
+                        break;
+                }
+            } else if (moedaInicial == "inicialLibra") {
+                switch (moedaFinal) {
+                    case "finalReal":
+                        resultado.innerHTML = `<div> ${moeda} Libras Esterlinas equivalem a ${convertido} Reais</div>`;
+                        break;
+                    case "finalDolarUS":
+                        resultado.innerHTML = `<div> ${moeda} Libras Esterlinas equivalem a ${convertido} Dólares Americanos</div>`;
+                        break;
+                    case "finalEuro":
+                        resultado.innerHTML = `<div> ${moeda} Libras Esterlinas equivalem a ${convertido} Euros</div>`;
+                        break;
+                    case "finalDolarCad":
+                        resultado.innerHTML = `<div> ${moeda} Libras Esterlinas equivalem a ${convertido} Dólares Canadenses</div>`;
+                        break;
+                    default:
+                        resultado.innerHTML = `<div>Não é possível converter para a mesma moeda</div>`;
+                        break;
+                }
+            } else if (moedaInicial == "inicialDolarCad") {
+                switch (moedaFinal) {
+                    case "finalReal":
+                        resultado.innerHTML = `<div> ${moeda} Dólares Canadenses equivalem a ${convertido} Reais</div>`;
+                        break;
+                    case "finalDolarUS":
+                        resultado.innerHTML = `<div> ${moeda} Dólares Canadenses equivalem a ${convertido} Dólares Americanos</div>`;
+                        break;
+                    case "finalEuro":
+                        resultado.innerHTML = `<div> ${moeda} Dólares Canadenses equivalem a ${convertido} Euros</div>`;
+                        break;
+                    case "finalLibra":
+                        resultado.innerHTML = `<div> ${moeda} Dólares Canadenses equivalem a ${convertido} Libras Esterlinas</div>`;
+                        break;
+                    default:
+                        resultado.innerHTML = `<div>Não é possível converter para a mesma moeda</div>`;
+                        break;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
