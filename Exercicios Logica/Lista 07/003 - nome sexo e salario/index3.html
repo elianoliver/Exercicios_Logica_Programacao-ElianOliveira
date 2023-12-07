@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>003 - Nome Sexo e Salário</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        form div.sexo {
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px 0 10px;
+        }
+
+        output div {
+            display: flex;
+            justify-content: flex-start;
+
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Faça um algoritmo que leia o nome, o sexo e o salário de 5 funcionários e guarde esses dados em três vetores. No final, mostre uma listagem contendo apenas os dados das funcionárias mulheres que ganham mais de R$5 mil.
+    -->
+    <h1>003 - Nome Sexo e Salário</h1>
+
+    <form action="">
+        <!-- NOME -->
+        <div>
+            <label for="idNome">Nome:</label>
+            <input type="text" name="nmNome" id="idNome" required />
+        </div>
+
+        <!-- SEXO -->
+        <div class="sexo">
+            <label>Sexo:</label>
+
+            <div>
+                <input type="radio" id="masculino" name="genero" value="masculino">
+                <label for="masculino">Masculino</label><br>
+            </div>
+
+            <div>
+                <input type="radio" id="feminino" name="genero" value="feminino">
+                <label for="feminino">Feminino</label><br>
+            </div>
+        </div>
+
+        <!-- SALÁRIO -->
+        <div>
+            <label for="idIdade">Salário:</label>
+            <input type="number" name="nmIdade" id="idIdade" min="0" required />
+        </div>
+
+        <!-- BOTÃO ENVIAR -->
+        <div>
+            <input type="button" value="Enviar" onclick="enviar()" />
+            <input type="button" value="Mostrar" onclick="mostrar()" />
+        </div>
+
+
+        <!-- RESULTADO -->
+        <output></output>
+    </form>
+
+    <script>
+        let nomes = [];
+        let sexos = [];
+        let salarios = [];
+        let contador = 1;
+
+        function enviar() {
+            let nome = document.querySelector("#idNome").value;
+            let sexo = document.querySelector("input[name='genero']:checked");
+            let salario = document.querySelector("#idIdade").value;
+            let output = document.querySelector("output");
+
+            if (nome == "" || sexo == null || salario == "") {
+                output.innerHTML = `<div>Preencha todos os campos!</div>`;
+                return;
+            } else if (contador > 5) {
+                output.innerHTML = `<div>Limite de cadastros atingido!</div>`;
+                return;
+            }
+
+
+            salario = parseFloat(salario);
+            output.innerHTML = "";
+
+            nomes.push(nome);
+            sexos.push(sexo.value);
+            salarios.push(salario.toFixed(2));
+
+            contador++;
+
+            document.querySelector("#idNome").value = "";
+            document.querySelector("#idIdade").value = "";
+        }
+
+        function mostrar() {
+            let output = document.querySelector("output");
+            let mensagem = "Funcionárias mulheres que ganham mais de R$5 mil:<br><br>";
+
+            if (nomes.length == 0) {
+                output.innerHTML = `<div>Não há dados para mostrar!</div>`;
+                return;
+            }
+
+            for (let i = 0; i < nomes.length; i++) {
+                if (sexos[i] == "feminino" && salarios[i] > 5000) {
+                    mensagem += `${nomes[i]} - R$ ${salarios[i]}<br>`;
+                }
+            }
+
+            output.innerHTML = `<div>${mensagem}</div>`;
+        }
+    </script>
+</body>
+
+</html>

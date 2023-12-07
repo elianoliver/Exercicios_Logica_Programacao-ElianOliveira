@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>002 - Pode Votar?</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Faça um programa que leia o ano de nascimento de uma pessoa, calcule a idade dela e depois mostre se ela pode ou não votar. -->
+
+    <h1>002 - Pode Votar?</h1>
+
+    <form action="">
+        <div>
+            <label for="idNascimento">Data de Nascimento: </label>
+            <input type="date" name="nmNascimento" id="idNascimento">
+        </div>
+
+        <div>
+            <input type="button" value="Verificar" onclick="verificar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function verificar() {
+            let nascimento = document.querySelector('#idNascimento').value;
+            let anoNascimento = nascimento.split('-')[0];
+            let anoAtual = new Date().getFullYear();
+            let idade = anoAtual - anoNascimento;
+
+            let output = document.querySelector('output');
+
+            if (idade < 16) {
+                output.innerHTML = `Com ${idade} anos, você não pode votar!`;
+            } else if (idade < 18 || idade > 65) {
+                output.innerHTML = `Com ${idade} anos, o voto é opcional!`;
+            } else {
+                output.innerHTML = `Com ${idade} anos, o voto é obrigatório!`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

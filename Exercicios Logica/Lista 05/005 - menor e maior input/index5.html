@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>005 - menor e maior input</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Crie um aplicativo que leia o preço de 'n' produtos. No final, mostre na tela qual foi o maior e qual foi o menor preço digitados. -->
+
+    <h1>005 - menor e maior input</h1>
+
+    <form action="">
+        <!-- PREÇO -->
+        <div>
+            <label for="idValor">1º Preço</label>
+            <input type="number" name="nmValor" id="idValor" min="0" step="0.01">
+        </div>
+
+        <!-- BOTÃO ENVIAR -->
+        <div>
+            <input type="button" value="Enviar" onclick="mostrar()">
+        </div>
+
+        <!-- RESULTADO -->
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        let contador = 1;
+        let menor;
+        let maior;
+
+        function mostrar() {
+            let numero = Number(document.querySelector('#idValor').value);
+            let label = document.querySelector('label');
+            let output = document.querySelector('output');
+
+            if (contador == 1) {
+                menor = numero;
+                maior = numero;
+            }
+
+            if (numero < menor) {
+                menor = numero;
+            }
+            if (numero > maior) {
+                maior = numero;
+            }
+
+            label.innerText = `${++contador}º Preço`;
+            output.innerText = `Menor: ${menor} Maior: ${maior}`;
+        }
+    </script>
+
+</body>
+
+</html>

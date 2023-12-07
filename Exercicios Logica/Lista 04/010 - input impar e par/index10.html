@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>010 - Input impar e par</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Crie um programa que leia os valores inicial e final de um intervalo e imprima todos os valores impares ou pares contidos no intervalo.
+    O usuário deve poder escolher entre impares e pares. -->
+
+    <h1>010 - Input impar e par</h1>
+
+    <form action="">
+        <!-- VALOR INICIAL -->
+        <div>
+            <label for="idInicio">Valor Inicial:</label>
+            <input type="number" name="nmInicio" id="idInicio">
+        </div>
+
+        <!-- VALOR FINAL -->
+        <div>
+            <label for="idFinal">Valor Final:</label>
+            <input type="number" name="nmFinal" id="idFinal">
+        </div>
+
+        <!-- RADIO -->
+        <div>
+            <input type="radio" id="idPares" name="imparPar" value="idPares" checked>
+            <label for="idPares">Par</label>
+
+            <input type="radio" id="idImpar" name="imparPar" value="idImpar">
+            <label for="idImpar">Ímpar</label>
+        </div>
+
+        <!-- BOTÃO -->
+        <div>
+            <input type="button" value="Mostrar Contagem" onclick="mostrar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function mostrar() {
+            let inicio = document.querySelector('#idInicio').value;
+            let final = document.querySelector('#idFinal').value;
+            let imparPar = document.querySelector('input[name="imparPar"]:checked').value;
+            let output = document.querySelector('output');
+
+            output.innerHTML = ''; // limpa o output
+
+            // se for par
+            if (imparPar == 'idPares') {
+                for (let i = inicio; i <= final; i++) {
+                    if (i % 2 == 0) {
+                        output.innerHTML += `${i} `;
+                    }
+                }
+            }
+            // se for impar
+            else if (imparPar == 'idImpar') {
+                for (let i = inicio; i <= final; i++) {
+                    if (i % 2 != 0) {
+                        output.innerHTML += `${i} `;
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

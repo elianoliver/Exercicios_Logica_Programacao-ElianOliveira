@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>009 - Selecionando Celcius para Farenheit</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            display: grid;
+            grid-template-areas:
+                "inicial final"
+                "temp temp"
+                "botao botao"
+                "resultado resultado";
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 10px;
+        }
+
+        .inicial {
+            grid-area: inicial;
+        }
+        .final {
+            grid-area: final;
+        }
+        .temp{
+            grid-area: temp;
+            text-align: center;
+        }
+        .botao {
+            grid-area: botao;
+            padding: 5px;
+        }
+        .resultado {
+            grid-area: resultado;
+            text-align: center;
+        }
+
+        output div{
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        .estiloDiv {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Crie um novo programa a partir do exercício anterior e permita que o usuário escolha em que unidade de medida ele deseja informar a temperatura (C, F ou K). O programa deverá converter deverá converter a temperatura para as outras unidades de medida.
+
+    Sendo C= Celsius, F= Fahrenheit e K = Kelvin
+
+    Formulas fornecidas:
+    K=C+273
+    K-273 = C
+    F=(9*C+160)/5
+    ((F * 5)-160)/9 = C
+    ((F * 5)-160)/9 + 273 = K
+    F = (((K - 273) * 9) + 160)/5
+    -->
+
+    <h1>009 - Celcius para Fahrenheit</h1>
+
+    <form action="">
+        <!-- TEMPERATURA INICIAL -->
+        <div class="estiloDiv Inicial">
+            <div>
+                <label>Temperatura Inicial</label>
+            </div>
+            <div>
+                <input type="radio" id="inicialCelcius" name="nmTempInicial">
+                <label for="inicialCelcius">Celcius</label>
+            </div>
+            <div>
+                <input type="radio" id="inicialFahrenheit" name="nmTempInicial">
+                <label for="inicialFahrenheit">Fahrenheit</label>
+            </div>
+            <div>
+                <input type="radio" id="inicialKelvin" name="nmTempInicial">
+                <label for="inicialKelvin">Kelvin</label>
+            </div>
+        </div>
+
+        <!-- TEMPERATURA FINAL -->
+        <div class="estiloDiv Final">
+            <div>
+                <label>Temperatura Final</label>
+            </div>
+            <div>
+                <input type="radio" id="finalCelcius" name="nmTempFinal">
+                <label for="finalCelcius">Celcius</label>
+            </div>
+            <div>
+                <input type="radio" id="finalFahrenheit" name="nmTempFinal">
+                <label for="finalFahrenheit">Fahrenheit</label>
+            </div>
+            <div>
+                <input type="radio" id="finalKelvin" name="nmTempFinal">
+                <label for="finalKelvin">Kelvin</label>
+            </div>
+        </div>
+
+        <!-- TEMPERATURA INPUT-->
+        <div class="estiloDiv temp">
+            <label for="idTemperatura">Temperatura</label>
+            <input type="number" name="nmTemperatura" id="idTemperatura" step="0.1">
+        </div>
+
+        <!-- BOTÃO ENVIAR -->
+        <input type="button" class="botao" value="Enviar" onclick="mostrar()">
+
+        <!-- RESULTADO -->
+        <output class="resultado"></output>
+
+    </form>
+
+    <script>
+        let resultado;
+
+        function mostrar() {
+            let temperaturaInicial = document.querySelector('input[name="nmTempInicial"]:checked').id;
+            let temperaturaFinal = document.querySelector('input[name="nmTempFinal"]:checked').id;
+            let temperatura = Number(document.querySelector('input[name="nmTemperatura"]').value);
+            let output = document.querySelector('output');
+
+            // INICIAL CELCIUS
+            if (temperaturaInicial == 'inicialCelcius' && temperaturaFinal == 'finalFahrenheit') {
+                resultado = ((temperatura * 9) + 160) / 5;
+                output.innerHTML = `<div>${temperatura}°C = ${resultado.toFixed(1)}°F</div>`;
+
+            } else if (temperaturaInicial == 'inicialCelcius' && temperaturaFinal == 'finalKelvin') {
+                resultado = temperatura + 273;
+                output.innerHTML = `<div>${temperatura}°C = ${resultado.toFixed(1)}°K</div>`;
+
+            // INICIAL FAHRENHEIT
+            } else if (temperaturaInicial == 'inicialFahrenheit' && temperaturaFinal == 'finalCelcius') {
+                resultado = ((temperatura - 32) * 5) / 9;
+                output.innerHTML = `<div>${temperatura}°F = ${resultado.toFixed(1)}°C</div>`;
+
+            } else if (temperaturaInicial == 'inicialFahrenheit' && temperaturaFinal == 'finalKelvin') {
+                resultado = (((temperatura - 32) * 5) / 9) + 273;
+                output.innerHTML = `<div>${temperatura}°F = ${resultado.toFixed(1)}°K</div>`;
+
+            // INICIAL KELVIN
+            } else if (temperaturaInicial == 'inicialKelvin' && temperaturaFinal == 'finalCelcius') {
+                resultado = temperatura - 273;
+                output.innerHTML = `<div>${temperatura}°K = ${resultado.toFixed(1)}°C</div>`;
+
+            } else if (temperaturaInicial == 'inicialKelvin' && temperaturaFinal == 'finalFahrenheit') {
+                resultado = (((temperatura - 273) * 9) + 160) / 5;
+                output.innerHTML = `<div>${temperatura}°K = ${resultado.toFixed(1)}°F</div>`;
+
+            // INICIAL E FINAL IGUAIS
+            } else {
+                output.innerHTML = `<div>Temperatura inicial e final iguais</div>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

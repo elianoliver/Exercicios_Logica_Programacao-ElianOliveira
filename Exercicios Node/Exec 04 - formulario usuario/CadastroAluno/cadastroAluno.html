@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Aluno</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        fieldset {
+            display: flex;
+            width: 400px;
+            flex-direction: column;
+            gap: 15px;
+            /* padding: 20px; */
+            border-radius: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        input{
+            padding: 5px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            transform: scale(1.2);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="post">
+        <fieldset>
+            <legend>Cadastro de Aluno</legend>
+
+            <!-- INFO INPUTS -->
+            <div class="info-inputs">
+                <div class="info-item">
+                    <label for="idNome">Nome</label>
+                    <input type="text" name="nmNome" id="idNome" required>
+                </div>
+
+                <div class="info-item">
+                    <label for="idSobrenome">Sobrenome</label>
+                    <input type="text" name="nmSobrenome" id="idSobrenome" required>
+                </div>
+
+                <div class="info-item">
+                    <label for="idNascimento">Data de Nascimento</label>
+                    <input type="date" name="nmNascimento" id="idNascimento" min="2000-01-01" max="2017-12-31" required>
+                </div>
+
+                <div class="info-item">
+                    <label for="idEndereco">Endereço</label>
+                    <input type="text" name="nmEndereco" id="idEndereco">
+                </div>
+
+                <div class="info-item">
+                    <label for="idMae">Nome da Mãe</label>
+                    <input type="text" name="nmMae" id="idMae" required>
+                </div>
+
+                <div class="info-item">
+                    <label for="idPai">Nome do Pai</label>
+                    <input type="text" name="nmPai" id="idPai">
+                </div>
+
+                <div class="info-item">
+                    <label for="idEmail">E-mail</label>
+                    <input type="email" name="nmEmail" id="idEmail" required>
+                </div>
+
+                <div class="info-item">
+                    <label for="idTel">Telefone</label>
+                    <input type="tel" name="nmTel" id="idTel">
+                </div>
+
+                <div class="info-item">
+                    <label for="idSerie">Série</label>
+                    <input type="number" name="nmSerie" id="idSerie" min="1" max="9" required>
+                </div>
+            </div>
+
+            <!-- GENEROS -->
+            <div class="generos-inputs">
+                <div class="genero-title">
+                    <span>Sexo</span>
+                </div>
+
+                <div class="genero-group">
+                    <div class="generos-inputs">
+                        <input type="radio" name="nmSexo" id="idFeminino" value="Feminino" required>
+                        <label for="idFeminino">Feminino</label>
+                    </div>
+                    <div class="generos-inputs">
+                        <input type="radio" name="nmSexo" id="idMasculino" required>
+                        <label for="idMasculino">Masculino</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NECESSIDADES -->
+            <div class="necessidades-inputs generos-inputs">
+                <div class="necessidades-title">
+                    <span>Necessidades Especiais</span>
+                </div>
+
+                <div class="generos-inputs">
+                    <input type="checkbox" name="nmAuditiva" id="idAuditiva">
+                    <label for="idAuditiva">Deficiência Auditiva</label>
+                </div>
+
+                <div class="generos-inputs">
+                    <input type="checkbox" name="nmMotora" id="idMotora">
+                    <label for="idMotora">Deficiência Motora</label>
+                </div>
+
+                <div class="generos-inputs">
+                    <input type="checkbox" name="nmVisual" id="idVisual">
+                    <label for="idVisual">Deficiência Visual</label>
+                </div>
+
+                <div class="generos-inputs">
+                    <input type="checkbox" name="nmCerebral" id="idCerebral">
+                    <label for="idCerebral">Deficiência Cerebral</label>
+                </div>
+
+                <div class="generos-inputs">
+                    <input type="checkbox" name="nmAutismo" id="idAutismo">
+                    <label for="idAutismo">Perturbação do Espectro Autista</label>
+                </div>
+
+                <div class="generos-inputs">
+                    <input type="checkbox" name="nmForoPsicologico" id="idForoPsicologico">
+                    <label for="idForoPsicologico">Perturbação do Foro Psicológico</label>
+                </div>
+
+                <div class="generos-inputs">
+                    <input type="checkbox" name="nmAprendizagem" id="idAprendizagem">
+                    <label for="idAprendizagem">Perturbações de Aprendizagem</label>
+                </div>
+
+                <div class="generos-inputs">
+                    <input type="checkbox" name="nmAltasHabilidades" id="idAltasHabilidades">
+                    <label for="idAltasHabilidades">Altas Habilidades</label>
+                </div>
+            </div>
+
+            <!-- BOTOES -->
+            <div class="buttons">
+                <input type="submit" value="Salvar">
+                <input type="reset" value="Limpar Tela">
+            </div>
+        </fieldset>
+    </form>
+
+</body>
+
+</html>

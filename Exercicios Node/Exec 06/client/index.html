@@ -1,0 +1,51 @@
+<!-- FN00. Protótipo da tela principal
+=====================================================================================================
+1. Criar a tela de uma urna eletrônica. Esta tela deverá conter um campo para digitação do número eleitoral
+do candidato e um campo para apresentar o nome do candidato, a tela também deverá exibir a foto do candidato.
+Caso o  eleitor não se recorde do número de seu candidato ele poderá  selecionar o número do candidato de uma lista.
+A urna deverá contar com os botões "Confirmar", "Cancelar", "Branco"
+
+FN01. Carga inicial de candidatos e configuracoes da urna eletronica
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+    <title>Urna Eletrônica</title>
+</head>
+
+<body>
+    <div id="urna">
+        <h2>Urna Eletrônica</h2>
+
+        <img id="fotoCandidato" src="candidato.png" alt="Foto do Candidato">
+
+        <h2 id="nomeCandidato">Joãozinho</h2>
+
+        <form action="">
+            <div class="containerInput">
+                <input type="number" id="numeroInput" oninput="validateFields()" placeholder="Digite o número do candidato">
+                <!-- lista de candidatos -->
+                <select name="candidatos" id="idCandidatos">
+                    <option value="1">11 Joãozinho</option>
+                    <option value="2">12 Mariazinha</option>
+                    <option value="3">13 Pedrinho</option>
+                </select>
+            </div>
+
+            <div>
+                <button class="btn" id="confirmarBtn" disabled onclick="confirmarVoto()">Confirmar</button>
+                <button class="btn" id="cancelarBtn" disabled onclick="cancelarVoto()">Cancelar</button>
+                <button class="btn" id="brancoBtn" disabled onclick="votoBranco()">Branco</button>
+
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

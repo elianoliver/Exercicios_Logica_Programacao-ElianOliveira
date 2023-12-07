@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>001 - Maior e Menor de 2</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Elabore um algoritmo que permita a entrada de dois números diferentes e verifique qual deles é o maior. -->
+    <h1>Exercício 001</h1>
+
+    <form action="">
+        <div>
+            <label for="idNum1">Número 1:</label>
+            <input type="number" name="nmNum1" id="idNum1">
+        </div>
+
+        <div>
+            <label for="idNum2">Número 2:</label>
+            <input type="number" name="nmNum2" id="idNum2">
+        </div>
+
+        <div>
+            <input type="button" value="Verificar" onclick="verificar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function verificar() {
+            var num1 = Number(document.querySelector('#idNum1').value);
+            var num2 = Number(document.querySelector('#idNum2').value);
+            var output = document.querySelector('output');
+
+            if (num1 > num2) {
+                output.innerHTML = `O número ${num1} é maior que o número ${num2}`;
+            } else if (num1 < num2) {
+                output.innerHTML = `O número ${num2} é maior que o número ${num1}`;
+            } else {
+                output.innerHTML = 'Os números são iguais';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

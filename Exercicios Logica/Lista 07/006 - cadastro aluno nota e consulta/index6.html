@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>006 - Cadastro de Alunos, Notas e Consulta</title>
+
+    <link rel="stylesheet" href="style6.css" />
+</head>
+
+<body>
+    <!-- Crie um programa para gerenciar as notas dos alunos de uma escola.
+
+    Crie um vetor para armazenar o nome dos alunos.
+    Crie um vetor para armazenar o endereço dos alunos.
+    Crie um vetor para armazenar o nome da mãe dos alunos.
+    Crie um vetor para armazenar o nome do pai dos alunos.
+    Crie um vetor para armazenar o telefone dos pais dos alunos.
+    Crie 4 vetores para armazenar 4 notas por aluno.
+    As informações nos vetores se relacionarão através dos indexadores dos vetores.
+    Crie uma tela para cadastrar os alunos (nome, endereço, nome dos pais, telefone).
+    Crie uma tela para cadastrar as notas dos alunos.
+    Crie uma tela para consultar o cadastro e situação dos alunos.
+    -->
+    <h1>006 - Cadastro de Alunos, Notas e Consulta</h1>
+
+    <form action="" >
+        <fieldset class="cadastroAlunos"> <!-- CADASTRO ALUNO -->
+            <legend>Cadastro Aluno</legend>
+
+            <div> <!-- ALUNO -->
+                <label for="idNome">Nome Aluno:</label>
+                <input type="text" name="nmNome" id="idNome" />
+            </div>
+
+            <div> <!-- ENDEREÇO -->
+                <label for="idEndereco">Endereço:</label>
+                <input type="text" name="nmEndereco" id="idEndereco" />
+            </div>
+
+            <div> <!-- MÃE -->
+                <label for="idMae">Mãe:</label>
+                <input type="text" name="nmMae" id="idMae" />
+            </div>
+
+            <div> <!-- PAI -->
+                <label for="idPai">Pai:</label>
+                <input type="text" name="nmPai" id="idPai" />
+            </div>
+
+            <div> <!-- TELEFONE RESPONSÁVEIS -->
+                <label for="idTel">Tel. Responsáveis:</label>
+                <input type="tel" name="nmTel" id="idTel" />
+            </div>
+
+            <!-- BOTÃO ENVIAR -->
+            <div class="botoes">
+                <input type="button" value="Cadastrar" onclick="cadastrar()" />
+            </div>
+
+            <!-- OUTPUT CADASTRO ALUNO -->
+            <output id="outCadastro"></output>
+        </fieldset>
+
+        <fieldset class="cadastroNotas"> <!-- CADASTRO NOTAS ALUNO -->
+            <legend>Cadastro Notas</legend>
+
+            <div class="notas">
+                <div> <!-- NOTA 1 -->
+                    <label for="idNota1">Nota 1:</label>
+                    <input type="number" name="nmNota1" id="idNota1" step="0.01" min="0" max="10" />
+                </div>
+                <div> <!-- NOTA 2 -->
+                    <label for="idNota2">Nota 2:</label>
+                    <input type="number" name="nmNota2" id="idNota2" step="0.01" min="0" max="10" />
+                </div>
+                <div> <!-- NOTA 3 -->
+                    <label for="idNota3">Nota 3:</label>
+                    <input type="number" name="nmNota3" id="idNota3" step="0.01" min="0" max="10" />
+                </div>
+                <div> <!-- NOTA 4 -->
+                    <label for="idNota4">Nota 4:</label>
+                    <input type="number" name="nmNota4" id="idNota4" step="0.01" min="0" max="10" />
+                </div>
+
+                <!-- BOTÃO ENVIAR -->
+                <div class="botoes">
+                    <input type="button" value="Cadastrar Notas" onclick="cadastrarNotas()" />
+                </div>
+
+                <!-- OUTPUT CADASTRO NOTAS -->
+                <output id="outCadastroNotas"></output>
+            </div>
+        </fieldset>
+
+        <fieldset class="consultaAlunos"> <!-- CONSULTA ALUNO -->
+            <legend>Consulta Aluno</legend>
+
+            <div>
+                <label for="idConsulta">Nome do Aluno:</label>
+                <input type="text" name="nmConsulta" id="idConsulta" />
+
+                <!-- BOTÃO ENVIAR -->
+                <div class="botoes">
+                    <input type="button" value="Consultar" onclick="consultar()" />
+                    <input type="button" value="Próximo >" onclick="proximo()" />
+                </div>
+
+                <!-- OUTPUT CONSULTA ALUNO -->
+                <output id="outConsulta"></output>
+            </div>
+        </fieldset>
+    </form>
+
+    <script src="main6.js"></script>
+</body>
+
+</html>

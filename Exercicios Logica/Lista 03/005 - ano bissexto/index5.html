@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>005 - Ano Bissexto</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Faça um algoritmo que leia um determinado ano e mostre se ele é ou não BISSEXTO. -->
+
+    <h1>005 - Ano Bissexto</h1>
+
+    <form action="">
+        <div>
+            <label for="idAno">Ano: </label>
+            <input type="number" name="nmAno" id="idAno">
+        </div>
+
+        <div>
+            <input type="button" value="Verificar" onclick="verificar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function verificar() {
+            let ano = document.querySelector('#idAno').value;
+            let output = document.querySelector('output');
+
+            let resto4 = ano % 4;
+            let resto100 = ano % 100;
+            let resto400 = ano % 400;
+
+            if ((resto4 == 0 && resto100 != 0) || (resto400 == 0)) {
+                output.innerHTML = `O ano ${ano} é BISSEXTO`;
+            } else {
+                output.innerHTML = `O ano ${ano} não é BISSEXTO`;
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

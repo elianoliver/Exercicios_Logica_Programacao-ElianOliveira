@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>008 - Achar Número no Vetor Aleatório</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        output div {
+            display: flex;
+            justify-content: flex-start;
+
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Faça um algoritmo que preencha um vetor de 30 posições com números entre 1 e 15 sorteados pelo computador. Depois disso, peça para o usuário digitar um número (chave) e seu programa deve mostrar em que posições essa chave foi encontrada. Mostre também quantas vezes a chave foi sorteada. -->
+
+    <h1>008 - Achar Número no Vetor Aleatório</h1>
+
+    <form action="">
+        <!-- NUMEROS ALEATÓRIOS -->
+        <div>
+            <p></p>
+        </div>
+
+        <div>
+            <!-- INPUT NUMERO -->
+            <label for="idNum">Número: </label>
+            <input type="number" name="nmNum" id="idNum" />
+
+            <!-- BOTÃO ENVIAR -->
+            <input type="button" value="Enviar" onclick="enviar()" />
+        </div>
+
+        <!-- RESULTADO -->
+        <output></output>
+    </form>
+
+    <script>
+        let vetor = [];
+        let numAleatorio;
+        document.onload = gerarAleatorio();
+
+        function gerarAleatorio() {
+            let inputNumeros = document.querySelector("p");
+
+            for (let i = 0; i < 30; i++) {
+                numAleatorio = Math.floor(Math.random() * (15 - 1 + 1)) + 1;
+                vetor.push(` ${numAleatorio}`);
+            }
+
+            inputNumeros.innerHTML = `<div>${vetor}</div>`;
+        }
+
+        function enviar() {
+            let numero = Number(document.querySelector("#idNum").value);
+            let output = document.querySelector("output");
+
+            let posicao = [];
+            let cont = 0;
+
+            for (let i = 0; i < vetor.length; i++) {
+                if (vetor[i] == numero) {
+                    posicao.push(i);
+                    cont++;
+                }
+            }
+
+            output.innerHTML = `<div>Posição: ${posicao}</div>`;
+            output.innerHTML += `<div>Quantidade: ${cont}</div>`;
+        }
+    </script>
+</body>
+
+</html>

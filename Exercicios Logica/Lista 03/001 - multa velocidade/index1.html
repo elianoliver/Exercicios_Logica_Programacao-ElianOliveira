@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>001 - Multa Velocidade</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Escreva um programa que pergunte a velocidade de um carro. Caso ultrapasse 80Km/h, exiba uma mensagem dizendo que o usuário foi multado. Nesse caso, exiba o valor da multa, cobrando R$5 por cada Km/h acima da velocidade permitida. -->
+
+    <h1>Exercício 001</h1>
+
+    <form action="">
+        <div>
+            <label for="idVelocidade">Velocidade do carro: </label>
+            <input type="number" name="nmVelocidade" id="idVelocidade" min="0">
+        </div>
+
+        <div>
+            <input type="button" value="Verificar" onclick="verificar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function verificar() {
+            let velocidade = Number(document.querySelector('#idVelocidade').value);
+            let output = document.querySelector('output');
+
+            if (velocidade > 80) {
+                let multa = (velocidade - 80) * 5;
+                output.innerHTML = `Você foi multado em R$${multa.toFixed(2)}`;
+            } else {
+                output.innerHTML = `Você não foi multado`;
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

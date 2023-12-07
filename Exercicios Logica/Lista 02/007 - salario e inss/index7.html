@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>007 - Salario e INSS</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Entrar com o salário de uma pessoa e imprimir o Salário Líquido, segundo a tabela a seguir:
+    se salário <= 600 - isento de inss
+    se salário > 600,00 e salário <= 1200,00 - 25% de inss
+    se salário > 1200,00 e salário <= 2000,00 - 30% de inss
+    se salário > 2000,00 - 35% de inss
+    O salário líquido é igual ao Salário Bruto menos o desconto de INSS.
+-->
+
+    <h1>Exercício 007</h1>
+
+    <form action="">
+        <div>
+            <label for="idSalario">Salário: </label>
+            <input type="number" name="nmSalario" id="idSalario">
+        </div>
+
+        <div>
+            <input type="button" value="Verificar" onclick="verificar()">
+        </div>
+
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function verificar() {
+            var salario = document.querySelector('#idSalario').value;
+            var output = document.querySelector('output');
+
+            if (salario <= 600) {
+                output.value = `Salário líquido: R$ ${salario}`;
+            } else if (salario > 600 && salario <= 1200) {
+                output.value = `Salário líquido: R$ ${salario - (salario * 0.25)}`;
+            } else if (salario > 1200 && salario <= 2000) {
+                output.value = `Salário líquido: R$ ${salario - (salario * 0.3)}`;
+            } else if (salario > 2000) {
+                output.value = `Salário líquido: R$ ${salario - (salario * 0.35)}`;
+            } else {
+                output.value = `Salário inválido`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

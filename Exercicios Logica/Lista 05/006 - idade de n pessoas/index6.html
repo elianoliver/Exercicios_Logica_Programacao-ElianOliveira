@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>006 - Idade de n Pessoas</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        output div {
+            display: flex;
+            justify-content: flex-start;
+
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Crie um algoritmo que leia a idade de 'n' pessoas, mostrando no final:
+    Qual é a média de idade do grupo
+    Quantas pessoas tem mais de 18 anos
+    Quantas pessoas tem menos de 5 anos
+    Qual foi a maior idade lida
+    -->
+
+    <h1>006 - Idade de n Pessoas</h1>
+
+    <form action="">
+        <!-- IDADE -->
+        <div>
+            <label for="idIdade">Idade Pessoa Nº1</label>
+            <input type="number" name="nmIdade" id="idIdade" min="0" autofocus>
+        </div>
+
+        <!-- BOTÃO ENVIAR -->
+        <input type="button" value="Enviar" onclick="mostrar()">
+
+        <!-- RESULTADO -->
+        <output></output>
+
+    </form>
+
+    <script>
+        let contador = 1;
+        let soma = 0;
+        let mediaIdades = 0;
+        let menor
+        let maior
+        let acimaDeDezoito = 0
+        let abaixoDeCinco = 0
+
+        function mostrar() {
+            let idade = Number(document.querySelector('#idIdade').value);
+            let label = document.querySelector('label');
+            let output = document.querySelector('output');
+
+            // evitando idades negativas
+            if (idade > 0) {
+
+                if (contador == 1) {
+                    menor = idade;
+                    maior = idade;
+                }
+
+                //media de idades
+                soma += idade;
+                mediaIdades = soma / contador;
+
+                //maior de 18 e menor de 5 anos
+                if (idade > 18) {
+                    acimaDeDezoito++;
+                } else if (idade < 5) {
+                    abaixoDeCinco++;
+                }
+
+                //maior e menor idade
+                if (idade < menor) {
+                    menor = idade;
+                }
+                if (idade > maior) {
+                    maior = idade;
+                }
+
+                label.innerText = `Idade Pessoa Nº${++contador}`;
+
+                output.innerHTML = `
+                <div>Média: ${mediaIdades.toFixed(2)}</div>
+                <div>Menor: ${menor} Maior: ${maior}</div>
+                <div>Acima de 18: ${acimaDeDezoito} pessoas</div>
+                <div>Abaixo de 5: ${abaixoDeCinco} pessoas</div>
+                `;
+            } else {
+                output.innerHTML = 'Digite uma idade válida!';
+                return // sai da função
+            }
+        }
+    </script>
+
+</body>
+
+</html>

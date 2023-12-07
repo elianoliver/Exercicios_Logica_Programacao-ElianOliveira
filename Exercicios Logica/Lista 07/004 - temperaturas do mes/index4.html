@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>004 - Temperaturas do Mês</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        output div {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Crie um programa para armazenar informações meteorológicas.
+        Crie um vetor para armazenar 30 temperaturas. (pre-inicializado)
+        Calcular a média das temperaturas.
+        O usuário pode informar um dia qualquer e o programa deve dizer se a temperatura desse dia estava acima ou abaixo da média. (dia = indice)
+    -->
+    <h1>004 - Temperaturas do Mês</h1>
+
+    <form action="">
+        <!-- DIA -->
+        <div>
+            <label for="idDia">Dia:</label>
+            <input type="number" name="nmDia" id="idDia" required />
+
+            <!-- BOTÃO ENVIAR -->
+            <input type="button" value="Enviar" onclick="enviar()" />
+        </div>
+
+        <!-- RESULTADO -->
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        let temperaturas = [];
+        let num = 0;
+        let media = 0;
+        let mensagem = "";
+
+        // pra não ficar alterando cada vez que executo a função
+        for (let i = 0; i < 30; i++) {
+            num = Math.floor(Math.random() * 50);
+            media += num;
+            temperaturas[i] = ` ${num}`
+        }
+
+        function enviar() {
+            let dia = document.querySelector("#idDia").value;
+            let output = document.querySelector("output");
+
+            if (dia == "") {
+                output.innerHTML = `<div>Preencha o dia!</div>`;
+                return;
+            }
+
+            mensagem = `
+            <div>Temperaturas no mês em Cº <br><br>${temperaturas}</div>
+            <div>Média das temperaturas: ${(media / temperaturas.length).toFixed(2)}ºC</div>
+            <div>Temperatura do dia ${dia}: ${temperaturas[dia]}ºC</div>`;
+
+            output.innerHTML = `${mensagem}`;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!-- FN00. Protótipo da tela principal
+=====================================================================================================
+1. Criar a tela de uma urna eletrônica. Esta tela deverá conter um campo para digitação do número eleitoral
+do candidato e um campo para apresentar o nome do candidato, a tela também deverá exibir a foto do candidato.
+Caso o  eleitor não se recorde do número de seu candidato ele poderá  selecionar o número do candidato de uma lista.
+A urna deverá contar com os botões "Confirmar", "Cancelar", "Branco"
+
+FN01. Carga inicial de candidatos e configuracoes da urna eletronica
+-->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Urna Eletrônica</title>
+   <style>
+     body {
+       font-family: Arial, sans-serif;
+       text-align: center;
+     }
+
+     #urna {
+       max-width: 400px;
+       margin: 50px auto;
+       padding: 20px;
+       border: 1px solid #ccc;
+       border-radius: 10px;
+     }
+
+     #numeroInput {
+       width: 80%;
+       margin-bottom: 10px;
+       padding: 5px;
+     }
+
+     #nomeCandidato {
+       font-weight: bold;
+       margin-bottom: 10px;
+     }
+
+     #fotoCandidato {
+       max-width: 100%;
+       height: auto;
+       margin-bottom: 10px;
+     }
+
+     .listaCandidatos {
+       text-align: left;
+     }
+
+     .btn {
+       padding: 10px;
+       margin: 5px;
+       cursor: pointer;
+     }
+
+     #confirmarBtn {
+       background-color: green;
+       color: white;
+     }
+
+     #cancelarBtn {
+       background-color: red;
+       color: white;
+     }
+
+     #brancoBtn {
+       background-color: #ccc;
+     }
+   </style>
+ </head>
+ <body>
+
+   <div id="urna">
+     <h2>Urna Eletrônica</h2>
+
+     <label for="numeroInput">Número Eleitoral:</label>
+     <input type="number" id="numeroInput" placeholder="Digite o número do candidato">
+
+     <div id="nomeCandidato"></div>
+     <img id="fotoCandidato" src="" alt="Foto do Candidato">
+
+     <div class="listaCandidatos">
+       <p>Escolha na lista:</p>
+       <select id="listaCandidatos">
+         <option value="1">Candidato 1</option>
+         <option value="2">Candidato 2</option>
+         <option value="3">Candidato 3</option>
+       </select>
+     </div>
+
+     <button class="btn" onclick="mostrarCandidato()">Mostrar Candidato</button>
+
+     <div>
+       <button class="btn" id="confirmarBtn" onclick="confirmarVoto()">Confirmar</button>
+       <button class="btn" id="cancelarBtn" onclick="cancelarVoto()">Cancelar</button>
+       <button class="btn" id="brancoBtn" onclick="votoBranco()">Branco</button>
+     </div>
+   </div>
+
+   <script>
+     function mostrarCandidato() {
+       var numeroInput = document.getElementById("numeroInput").value;
+       var listaCandidatos = document.getElementById("listaCandidatos");
+       var nomeCandidato = document.getElementById("nomeCandidato");
+       var fotoCandidato = document.getElementById("fotoCandidato");
+
+       if (numeroInput !== "") {
+         // Se o número foi digitado, exibe informações do candidato
+         nomeCandidato.innerText = "Candidato " + numeroInput;
+         fotoCandidato.src = "candidato" + numeroInput + ".jpg"; // Substitua com o caminho correto para as imagens
+       } else {
+         // Se nenhum número foi digitado, exibe informações do candidato selecionado na lista
+         var selectedValue = listaCandidatos.options[listaCandidatos.selectedIndex].value;
+         nomeCandidato.innerText = "Candidato " + selectedValue;
+         fotoCandidato.src = "candidato" + selectedValue + ".jpg"; // Substitua com o caminho correto para as imagens
+       }
+     }
+
+     function confirmarVoto() {
+       alert("Voto confirmado!");
+       resetUrna();
+     }
+
+     function cancelarVoto() {
+       alert("Voto cancelado!");
+       resetUrna();
+     }
+
+     function votoBranco() {
+       alert("Voto em branco!");
+       resetUrna();
+     }
+
+     function resetUrna() {
+       document.getElementById("numeroInput").value = "";
+       document.getElementById("nomeCandidato").innerText = "";
+       document.getElementById("fotoCandidato").src = "";
+       document.getElementById("listaCandidatos").selectedIndex = 0;
+     }
+   </script>
+ </body>
+ </html>

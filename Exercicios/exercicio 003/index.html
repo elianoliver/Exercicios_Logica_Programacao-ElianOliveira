@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotyflix</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      background-color: white;
+    }
+
+    main {
+      margin: 50px;
+    }
+
+    header {
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .container-musicas {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    .container-faq {
+      display: flex;
+      flex-direction: column;
+      margin-top: 50px;
+    }
+
+    .audio-download {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    summary {
+      width: 100%;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    footer{
+      padding: 50px;
+      background-color: #afafaf;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Spotfyflix</h1>
+    <h2>Todas as suas músicas preferidas em um só lugar!!!</h2>
+  </header>
+
+  <main>
+    <section class="container-musicas">
+      <div>
+        <!-- NOME DA MUSICA -->
+        <details>
+          <summary>Dream It</summary>
+          <p>banda tope</p>
+        </details>
+        <!-- AUDIO E DOWNLOAD -->
+        <div class="audio-download">
+          <audio controls>
+            <source src="assets/audio/Dream It - TrackTribe.mp3" type="audio/mp3">
+            <p>Your browser does not support the audio element.</p>
+          </audio>
+          <a href="assets/audio/Dream It - TrackTribe.mp3" download>
+            <p>Download</p>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <details>
+          <summary>Gully Dreams</summary>
+          <p>Banda muito tope</p>
+        </details>
+        <div class="audio-download">
+          <audio controls>
+            <source src="assets/audio/Gully Dreams - Hanu Dixit.mp3" type="audio/mp3">
+            <p>Your browser does not support the audio element.</p>
+          </audio>
+          <a href="assets/audio/Gully Dreams - Hanu Dixit.mp3" download>
+            <p>Download</p>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <details>
+          <summary>Kirwani</summary>
+          <p>Banda tope</p>
+        </details>
+        <div class="audio-download">
+          <audio controls>
+            <source src="assets/audio/Kirwani - Teental - Aditya Verma, Subir Dev.mp3" type="audio/mp3">
+            <p>Your browser does not support the audio element.</p>
+          </audio>
+          <a href="assets/audio/Kirwani - Teental - Aditya Verma, Subir Dev.mp3" download>
+            <p>Download</p>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <details>
+          <summary>Rains Of Meghalaya</summary>
+          <p>banda tope</p>
+        </details>
+        <div class="audio-download">
+          <audio controls>
+            <source src="assets/audio/Rains Of Meghalaya - Hanu Dixit.mp3" type="audio/mp3">
+            <p>Your browser does not support the audio element.</p>
+          </audio>
+          <a href="assets/audio/Rains Of Meghalaya - Hanu Dixit.mp3" download>
+            <p>Download</p>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <details>
+          <summary>Savior</summary>
+          <p>banda tope</p>
+        </details>
+        <div class="audio-download">
+          <audio controls>
+            <source src="assets/audio/Savior - Telecasted.mp3">
+            <p>Your browser does not support the audio element.</p>
+          </audio>
+          <a href="assets/audio/Savior - Telecasted.mp3" download>
+            <p>Download</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container-faq">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, qui!</summary>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore totam blanditiis est illum, voluptates dolorem minima? Voluptatum quisquam distinctio ipsam esse aperiam necessitatibus excepturi debitis, quos totam sit. Maxime, dolorem!</p>
+      </details>
+      <details>
+        <summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, unde.</summary>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore totam blanditiis est illum, voluptates dolorem minima? Voluptatum quisquam distinctio ipsam esse aperiam necessitatibus excepturi debitis, quos totam sit. Maxime, dolorem!</p>
+      </details>
+      <details>
+        <summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, unde.</summary>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore totam blanditiis est illum, voluptates dolorem minima? Voluptatum quisquam distinctio ipsam esse aperiam necessitatibus excepturi debitis, quos totam sit. Maxime, dolorem!</p>
+      </details>
+      <details>
+        <summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, unde.</summary>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore totam blanditiis est illum, voluptates dolorem minima? Voluptatum quisquam distinctio ipsam esse aperiam necessitatibus excepturi debitis, quos totam sit. Maxime, dolorem!</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <address>
+      Nome da Escola/Programa<br>
+      Endereço da Escola/Programa<br>
+      Cidade, Estado, CEP<br>
+      Telefone: (xx) xxxxx-xxxx<br>
+      Email: contato@escolaprogramae21.com
+    </address>
+  </footer>
+
+</body>
+
+</html>

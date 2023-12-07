@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    outline: 1px solid red;
+}
+
+/* body, h1, p{
+    margin: 0;
+    font-family:
+} */
+
+/* ======================HEADER============================= */
+header {
+    background-color: rgb(242, 175, 75);
+}
+
+body {
+    background-color: white;
+}
+
+.navbar,
+.logo,
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.logo {
+    margin-left: 15px;
+    padding: 10px;
+
+    & img {
+        width: 100px;
+    }
+
+    & p {
+
+        font-size: 1.4rem;
+    }
+}
+
+.menu {
+    list-style-type: none;
+
+    & li {
+        margin-right: 15px;
+        font-size: 1.4rem;
+    }
+}
+
+/* ========================== MAIN ============================== */
+.secTop {
+    display: flex;
+    justify-content: flex-end;
+    height: calc(100vh - 117.19px);
+
+    background-image: url("assets/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    & .textoApresentacao {
+        margin: 50px;
+        max-width: 300px;
+
+        & p,
+        h2 {
+            padding: 10px;
+        }
+    }
+}
+
+/* Media query para telas verticais com altura menor que 500px */
+@media (min-height: 500px) and (orientation: portrait) {
+    .secTop {
+        height: 500px;
+        background-size: cover;
+    }
+}

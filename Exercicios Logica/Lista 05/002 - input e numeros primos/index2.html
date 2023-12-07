@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>002 - input e numeros primos</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Crie um programa que leia os valores inicial e final de um intervalo e imprima todos os números primos contidos no intervalo. -->
+
+    <h1>002 - input e numeros primos</h1>
+
+    <form action="">
+        <!-- NUMERO INICIAL -->
+        <div>
+            <label for="idInicio">Inicio</label>
+            <input type="number" name="nmInicio" id="idInicio">
+        </div>
+
+        <!-- NUMERO FINAL -->
+        <div>
+            <label for="idFim">Fim</label>
+            <input type="number" name="nmFim" id="idFim">
+        </div>
+
+        <!-- BOTÃO ENVIAR -->
+        <div>
+            <input type="button" value="Enviar" onclick="mostrar()">
+        </div>
+
+        <!-- RESULTADO -->
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function mostrar() {
+            let inicio = Number(document.querySelector('#idInicio').value);
+            let fim = Number(document.querySelector('#idFim').value);
+            let output = document.querySelector('output');
+            let primo; // variável para verificar se é primo ou não
+
+            /* ======== ENTENDENDO O ALGORITMO ========
+            inicio 1
+            fim 10
+
+            variáveis   |   verificação    |         senteça
+            j2 e i2         j < i ?             não? então é primo
+
+            j2 e i3        j < i ?             sim? então verifica no segundo for
+                loop 2     i3 % j2 == 0 ?      não? então é primo
+                j++
+                j3 e i3    j < i ?             não? então é primo
+
+            j2 e i4         j < i ?             sim? então verifica no segundo for
+                loop 2      i4 % j2 == 0 ?      sim? então não é primo! break i++
+            */
+
+            if (inicio == '' || fim == '') {
+                output.innerHTML = 'Preencha todos os campos!';
+            } else {
+                output.innerHTML = '';
+
+                for (let i = inicio; i <= fim; i++) {
+                    primo = true;
+
+                    // enquanto j for menor que i, faça a verificação
+                    for (let j = 2; j < i; j++) {
+                        if (i % j == 0) { // se o resto da divisão for 0, não é primo
+                            primo = false;
+                            break;
+                        }
+                    }
+
+                    if (primo) {
+                        if (i != 1) { // 1 não é primo
+                            output.innerHTML += `${i} `;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

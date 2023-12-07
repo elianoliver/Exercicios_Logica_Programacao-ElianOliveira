@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+form fieldset {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+form > fieldset > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.notas{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.notas > div > input {
+    width: 80%;
+}
+
+output div {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.botoes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cadastroNotas, .consultaAlunos{
+    display: none;
+}

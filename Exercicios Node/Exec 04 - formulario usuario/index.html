@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário do Usuário</title>
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+    <form>
+        <label for="idNome">Nome:</label><br>
+        <input type="text" name="nmNome" id="idNome" required><br>
+        <label for="idCpf">CPF:</label><br>
+        <input type="text" name="nmCpf" id="idCpf" required><br><br>
+        <input type="button" value="Enviar GET" onclick="requisicaoGet()">
+        <input type="button" value="Enviar POST" onclick="requisicaoPost()">
+    </form>
+
+    <script>
+        async function requisicaoGet() {
+            let nome = document.getElementById("idNome").value;
+            let cpf = document.getElementById("idCpf").value;
+
+            let resposta = await fetch(`http://localhost:3000/usuario?nmNome=${nome}&nmCpf=${cpf}`);
+            console.log(await resposta.json());
+        }
+
+        async function requisicaoPost() {
+            let nome = document.getElementById("idNome").value;
+            let cpf = document.getElementById("idCpf").value;
+
+            if (!nome || !cpf) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            var options = {
+                method: "POST",
+                body: JSON.stringify({
+                    nmNome: nome,
+                    nmCpf: cpf
+                }),
+                headers: { "Content-Type": "application/json" }
+            };
+
+            try {
+                let resposta = await fetch("http://localhost:3000/usuario", options);
+                let data = await resposta.json();
+                console.log(data.mensagem);
+            } catch (error) {
+                console.error("Erro ao enviar POST request:", error);
+            }
+        }
+    </script>
+</body>
+
+</html>

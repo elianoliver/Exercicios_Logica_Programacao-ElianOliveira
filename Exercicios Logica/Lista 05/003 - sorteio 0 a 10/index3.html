@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>003 - sorteio 0 a 10</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        form {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: justify;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            gap: 20px;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        output div{
+            display: flex;
+            justify-content: flex-start;
+
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Desenvolva um programa que faça o sorteio de 20 números entre 0 e 10 e mostre na tela:
+    Quais foram os números sorteados
+    Quantos números estão acima de 5
+    Quantos números são divisíveis por 3
+    -->
+
+    <h1>003 - sorteio 0 a 10</h1>
+
+    <form action="">
+        <!-- BOTÃO MOSTRAR -->
+        <div>
+            <input type="button" value="Mostrar" onclick="mostrar()">
+        </div>
+
+        <!-- RESULTADO -->
+        <div>
+            <output></output>
+        </div>
+    </form>
+
+    <script>
+        function mostrar() {
+            let output = document.querySelector('output')
+            let numeros = []
+            let acimaDeCinco = 0
+            let divisivelPorTres = 0
+
+            for (let i = 0; i < 20; i++) {
+                let numero = Math.floor(Math.random() * 11) //max é 10
+                numeros.push(numero)
+
+                if (numero > 5) {
+                    acimaDeCinco++
+                }
+
+                if (numero % 3 == 0) {
+                    divisivelPorTres++
+                }
+            }
+
+            console.log(numeros)
+
+            output.innerHTML = `
+            <div>Números sorteados: ${numeros.join(', ')}</div>
+
+            <div>Acima de 5: ${acimaDeCinco} números</div>
+
+            <div>Divisíveis por 3: ${divisivelPorTres} números</div>`
+        }
+
+    </script>
+
+</body>
+
+</html>

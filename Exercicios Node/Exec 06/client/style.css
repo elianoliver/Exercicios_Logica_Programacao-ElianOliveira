@@ -1,0 +1,79 @@
+*{
+    /* outline: 1px solid red; */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#urna {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #ccc;
+}
+
+#fotoCandidato {
+    max-width: 300px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.containerInput{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#numeroInput {
+    width: 215px;
+    margin-bottom: 20px;
+    padding:10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+#numeroInput:focus , #idCandidatos:focus{
+    outline: none;
+}
+
+#idCandidatos{
+    height: 35px;
+    width: 60px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* BOTOES DE CONFIRMAÇÃO */
+.btn {
+    padding: 20px;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.btn:active {
+    opacity: 1;
+}
+.btn[disabled] {
+    opacity: 0.5;
+}
+
+#confirmarBtn {
+    background-color: green;
+    color: white;
+}
+
+#cancelarBtn {
+    background-color: red;
+    color: white;
+}
+
+#brancoBtn {
+    background-color: #ccc;
+    color: white;
+}
